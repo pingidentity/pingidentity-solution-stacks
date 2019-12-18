@@ -1,5 +1,8 @@
 # Relax the default Password Policy
 Set-ADDefaultDomainPasswordPolicy -Identity workforce.com -LockoutDuration 00:40:00 -LockoutObservationWindow 00:20:00 -ComplexityEnabled $false -ReversibleEncryptionEnabled $False -MaxPasswordAge 0 -MinPasswordAge 0 -PasswordHistoryCount 0
 
-# Add DNS Forwarder to ping-eng NameServers
+# Add DNS Forwarder to ping-eng.com NameServers -- this will allow Domain Members to resolve Internet addresses
 Add-DnsServerForwarder -IPAddress 52.40.214.44 -PassThru
+
+# Change the Administrator password to something easier
+Set-ADAccountPassword -Identity Administrator -Reset -NewPassword (ConvertTo-SecureString -AsPlainText "2FederateM0re" -Force)
