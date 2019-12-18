@@ -1,0 +1,7 @@
+# Point local DNS to Domain Controller
+Get-DnsClientServerAddress
+
+# Use the IPv4 Network Interface Index 
+Set-DnsClientServerAddress -InterfaceIndex {Index} -ServerAddresses ("{Domain Controller IP}")
+
+# Use `sconfig` to Add the CA Server to the Domain - `ping-demos.com`

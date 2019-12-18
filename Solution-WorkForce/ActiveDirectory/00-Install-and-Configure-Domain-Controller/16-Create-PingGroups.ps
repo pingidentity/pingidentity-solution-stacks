@@ -1,0 +1,7 @@
+$ou = "ou=Groups,dc=ping-demos,dc=com"
+
+New-ADGroup -Name "P14E Users" -SamAccountName P14EUsers -GroupCategory Security -GroupScope Global -DisplayName "P14E Users" -Path $ou -Description "Members of this group can be assigned Apps in P14E"
+New-ADGroup -Name "P14E Sample Users" -SamAccountName P14ESampleUsers -GroupCategory Security -GroupScope Global -DisplayName "P14E Sample App Users" -Path $ou -Description "Members of this group can be assigned to the Sample App in P14E"
+
+Add-ADGroupMember -Identity P14EUsers -Members pinguser1,pinguser2
+Add-ADGroupMember -Identity P14ESampleUsers -Members pinguser2

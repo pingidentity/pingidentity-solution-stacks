@@ -1,0 +1,17 @@
+# PF Base URL \ SAML EntityID
+PF_BASE_URL=https://workforce-pf.ping-demos.com:9031
+
+# PF Logging Level
+PF_LOG_LEVEL=DEBUG
+
+# PingID Properties -- base64 encoded value
+PID_BASE64=I0F1dG8tR2VuZXJhdGVkIGZyb20gUGluZ09uZSwgZG93bmxvYWRlZCBieSBpZD1bMTU4MDAwXSBlbWFpbD1bc29tZW9uZUBhbnl3aGVyZS5jb21dCiNNb24gT2N0IDA3IDEyOjM2OjM3IE1EVCAyMDE5CnVzZV9iYXNlNjRfa2V5PVRoaXNJc0FCYWRLZXkKdXNlX3NpZ25hdHVyZT10cnVlCnRva2VuPVRoaXNJc05vdEFUb2tlbgppZHBfdXJsPWh0dHBzOi8vaWRweG55bDNtLnBpbmdpZGVudGl0eS5jb20vcGluZ2lkCm9yZ19hbGlhcz1UaGlzSXNZb3VyUElET3JnQWxpYXMKYWRtaW5fdXJsPWh0dHBzOi8vaWRweG55bDNtLnBpbmdpZGVudGl0eS5jb20vcGluZ2lkCmF1dGhlbnRpY2F0b3JfdXJsPWh0dHBzOi8vYXV0aGVudGljYXRvci5waW5nb25lLmNvbS9waW5naWQvcHBt
+
+# PD Variables
+BASE_CLASS=domain
+BASE_ATTRIBUTE=dc: workforce.com
+USER_ORG_BASE=workforce.com
+USER_BASE_DN=dc=workforce.com
+
+# AD Base DN
+AD_BASE_DN=dc=ping-demos,dc=com

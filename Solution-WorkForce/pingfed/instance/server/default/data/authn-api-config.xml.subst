@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<authnApiConfig>
+    <apiApplications>
+        <application description="" id="4mUqlT8oDQ0ws85IP1kFXSc3B" name="Default AuthN API" url="${PF_BASE_URL}/pf-ws/authn/explorer"/>
+    </apiApplications>
+    <apiSettings apiEnabled="true" enableApiDescriptions="true"/>
+</authnApiConfig>

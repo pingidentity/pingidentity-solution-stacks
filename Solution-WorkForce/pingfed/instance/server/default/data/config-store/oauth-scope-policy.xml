@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:config xmlns:con="http://www.sourceid.org/2004/05/config">
+    <con:item name="default-scope-description">default</con:item>
+    <con:item name="lastUpdated">1564513312622</con:item>
+    <con:map name="scope-descriptions">
+        <con:item name="address">Address access</con:item>
+        <con:item name="phone">Phone Number access</con:item>
+        <con:item name="edit">Edit permissions</con:item>
+        <con:item name="openid">OpenID Connect login</con:item>
+        <con:item name="profile">Profile access</con:item>
+        <con:item name="admin">Admin permissions</con:item>
+        <con:item name="email">Email Address access</con:item>
+    </con:map>
+    <con:list name="dynamic-common-scopes"/>
+    <con:map name="scope-group-descriptions"/>
+    <con:map name="scope-group-mappings"/>
+    <con:map name="exclusive-scope-descriptions">
+        <con:item name="pd:consents:priv">Used to access the PingDirectory Consent API (Admin)</con:item>
+        <con:item name="pf:client:reg">Used to dynamically register clients (RFC 7591)</con:item>
+        <con:item name="pd:consents:unpriv">Used to access the PingDirectory Consent API (User)</con:item>
+        <con:item name="urn:pingidentity:directory-delegated-admin">Used to access the PD Delegated Admin app</con:item>
+        <con:item name="pd:dir:access">Used to access the PingDirectory REST API</con:item>
+    </con:map>
+    <con:list name="dynamic-exclusive-scopes"/>
+    <con:map name="exclusive-scope-group-descriptions"/>
+    <con:map name="exclusive-scope-group-mappings"/>
+</con:config>

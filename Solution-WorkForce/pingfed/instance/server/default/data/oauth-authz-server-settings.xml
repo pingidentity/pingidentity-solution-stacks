@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:OAuthConfig enableOAuth="true" authzCodeLength="30" authzCodeTimeout="60" rollRefreshTokens="false" rollingInterval="0" refreshTokenLength="42" atmIdForOAuthGrantManagement="" scopeForOAuthGrantManagement="" globalPersistentGrantExpirationTime="-1" globalPersistentGrantExpirationTimeUnit="d" globalPersistentGrantIdleTimeout="30" globalPersistentGrantIdleTimeoutTimeUnit="d" tokenEndpointBaseUrl="" userAuthzUrl="" registeredAuthzPath="" pendingAuthzTimeout="600" bypassActivationCodeConfirmation="false" devicePollingInterval="5" authzConsentSetting="INTERNAL" xmlns:urn="urn:pingidentity.com:pf:oauth:conf">
+    <urn:UserKeyToAccessTokenMapping contextId="authz_req|apc.hRsB6datB6BJplah" tokenManagerId="jwtDefault">
+        <urn1:AttributeMap Name="sub" Type="Authentication Policy Contract" Value="apc.entryUUID" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+    </urn:UserKeyToAccessTokenMapping>
+    <urn:ApcToUserKeyMapping sourcePluginId="hRsB6datB6BJplah">
+        <urn1:AttributeMap Name="USER_NAME" Type="Authentication Policy Contract" Value="mail" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        <urn1:AttributeMap Name="USER_KEY" Type="Authentication Policy Contract" Value="entryUUID" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+        <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+    </urn:ApcToUserKeyMapping>
+    <urn:ReuseExistingPersistentGrantForGrant>implicit</urn:ReuseExistingPersistentGrantForGrant>
+    <urn:allowedOrigins>http://int-docker.cpricedomain.ping-eng.com</urn:allowedOrigins>
+    <urn:allowedOrigins>http://int-docker.cpricedomain.ping-eng.com:80</urn:allowedOrigins>
+</urn:OAuthConfig>

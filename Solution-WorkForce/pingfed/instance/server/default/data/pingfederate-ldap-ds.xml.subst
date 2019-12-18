@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ldap:ldap-sources xmlns:ldap="http://pingidentity.com/2004/09/ldap-ds">
+    <ldap:ldap-source id="LDAP-63B6BEB8EC75EDD429DD56B79D3A30278D9F6068" maskAttributeValues="false" ldapType="ActiveDirectory" ldapTypeDesc="Active Directory" testOnBorrow="false" testOnReturn="false" createIfNecessary="true" minIdle="10" maxActive="100" maxWait="-1" timeBetweenEvictionRunsMillis="60000" readTimeoutMillis="3000" connTimeoutMillis="3000" verifyHost="false" dnsTtlMillis="60000" ldapDnsSrvPrefix="_ldap._tcp" ldapsDnsSrvPrefix="_ldaps._tcp">
+        <ldap:host>int-ad.solution-wf.ping-eng.com</ldap:host>
+        <ldap:principal>cn=pingfederate,ou=ServiceAccounts,${AD_BASE_DN}</ldap:principal>
+        <ldap:use-ssl>true</ldap:use-ssl>
+        <ldap:use-dns-srv-records>false</ldap:use-dns-srv-records>
+        <ldap:credentials>eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiRW1JY1UxOVdueSIsInZlcnNpb24iOiI5LjMuMS4xIn0..2cScpiX81GzrFtwhoErqUw.atqXjCuJ_wivzU-qzpqPUA.1_XTVthOegMHXAQkueqJ6A</ldap:credentials>
+        <ldap:authenticationMeth>simple</ldap:authenticationMeth>
+        <ldap:description>AD</ldap:description>
+        <ldap:name>AD</ldap:name>
+        <ldap:binaryAttributes>
+            <ldap:binaryAttribute>ms-ds-ConsistencyGUID</ldap:binaryAttribute>
+        </ldap:binaryAttributes>
+    </ldap:ldap-source>
+    <ldap:ldap-source id="LDAP-D803C87FAB2ADFB4B0A947B64BA6F0C6093A5CA3" maskAttributeValues="false" ldapType="PingDirectory" ldapTypeDesc="PingDirectory" testOnBorrow="false" testOnReturn="false" createIfNecessary="true" minIdle="10" maxActive="100" maxWait="-1" timeBetweenEvictionRunsMillis="60000" readTimeoutMillis="3000" connTimeoutMillis="3000" verifyHost="true" dnsTtlMillis="60000" ldapDnsSrvPrefix="_ldap._tcp" ldapsDnsSrvPrefix="_ldaps._tcp">
+        <ldap:host>pingdirectory</ldap:host>
+        <ldap:principal>cn=pingfederate</ldap:principal>
+        <ldap:use-ssl>false</ldap:use-ssl>
+        <ldap:use-dns-srv-records>false</ldap:use-dns-srv-records>
+        <ldap:credentials>eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiRW1JY1UxOVdueSIsInZlcnNpb24iOiI5LjMuMS4xIn0..IQiHlVWOeJxpzyLE_-okTg.Js_-oUT1ljYVwegpe-Rn-g.pMyRjdJcp8pUWibSxifCTw</ldap:credentials>
+        <ldap:authenticationMeth>simple</ldap:authenticationMeth>
+        <ldap:description>pingdirectory</ldap:description>
+        <ldap:name>pingdirectory</ldap:name>
+        <ldap:binaryAttributes/>
+    </ldap:ldap-source>
+</ldap:ldap-sources>

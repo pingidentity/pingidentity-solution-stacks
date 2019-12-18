@@ -1,0 +1,20 @@
+$Password = Read-Host -Prompt 'Enter SafeMode Admin Password' -AsSecureString
+$domainName = 'workforce.com'
+$netbiosName = 'workforce'
+
+$Params = @{
+    CreateDnsDelegation = $false
+    DatabasePath = 'C:\Windows\NTDS'
+    DomainMode = 'WinThreshold'
+    DomainName = $domainName
+    DomainNetbiosName = $netbiosName
+    ForestMode = 'WinThreshold'
+    InstallDns = $true
+    LogPath = 'C:\Windows\NTDS'
+    NoRebootOnCompletion = $true
+    SafeModeAdministratorPassword = $Password
+    SysvolPath = 'C:\Windows\SYSVOL'
+    Force = $true
+}
+
+Install-ADDSForest @Params

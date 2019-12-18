@@ -1,0 +1,8 @@
+# This set will add your PF Host into the Local Intranet Sites of Internet Explorer
+# You can Import this into Edge -- Settings --> Import --> Internet Explorer
+
+cd "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains"
+mkdir ping-demos.com
+cd ping-demos.com
+mkdir workforce-pf
+New-ItemProperty workforce-pf https -Value 1 -Type DWORD

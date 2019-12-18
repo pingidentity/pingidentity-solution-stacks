@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:config xmlns:con="http://www.sourceid.org/2004/05/config">
+    <con:item name="1337529:WARN">2019-08-06</con:item>
+    <con:item name="1337616:WARN">2019-08-06</con:item>
+    <con:item name="1337970:WARN">2019-08-06</con:item>
+    <con:item name="1338889:WARN">2019-08-07</con:item>
+    <con:item name="1338966:WARN">2019-08-13</con:item>
+    <con:item name="1383399:WARN">2019-09-17</con:item>
+    <con:item name="1419247:WARN">2019-10-11</con:item>
+    <con:item name="1455415:WARN">2019-11-12</con:item>
+    <con:item name="1504281:WARN">2019-12-17</con:item>
+</con:config>

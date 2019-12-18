@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ker:KerberosRealmsSettings xmlns:ker="http://pingidentity.com/2012/01/kerberos-realms">
+    <ker:KerberosRealms>
+        <ker:KerberosRealm id="KERB-EAA9C7D7BB4B37F92DA913C5737D62860E60532E">
+            <ker:kerberosRealmName>ping-demos.com</ker:kerberosRealmName>
+            <ker:keyDistributionCenters>
+                <ker:keyDistributionCenter>ad01</ker:keyDistributionCenter>
+            </ker:keyDistributionCenters>
+            <ker:kerberosUsername>pingfederate</ker:kerberosUsername>
+            <ker:kerberosPassword>eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoiRW1JY1UxOVdueSIsInZlcnNpb24iOiI5LjMuMy4zIn0..hqQ6dnVZwQxXXS0_jzFFrg.8z1X3UhOZA5WpJu9lnqT1w.btHPgoKkLYZce2lFQucOWQ</ker:kerberosPassword>
+            <ker:suppressDomainNameConcatenation>false</ker:suppressDomainNameConcatenation>
+        </ker:KerberosRealm>
+    </ker:KerberosRealms>
+    <ker:KdcTimeout>3000</ker:KdcTimeout>
+    <ker:KdcRetries>3</ker:KdcRetries>
+    <ker:ForceTcp>false</ker:ForceTcp>
+    <ker:Debug>false</ker:Debug>
+</ker:KerberosRealmsSettings>
