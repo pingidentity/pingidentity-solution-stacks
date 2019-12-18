@@ -14,4 +14,4 @@ USER_ORG_BASE=workforce.com
 USER_BASE_DN=dc=workforce.com
 
 # AD Base DN
-AD_BASE_DN=dc=ping-demos,dc=com
+AD_BASE_DN=dc=workforce,dc=com
