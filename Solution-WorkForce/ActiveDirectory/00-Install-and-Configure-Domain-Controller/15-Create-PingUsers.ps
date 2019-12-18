@@ -1,4 +1,5 @@
+$ou = $ou
 $defaultPassword = ConvertTo-SecureString -String "2FederateM0re" -AsPlainText -Force
 
-New-ADUser -Name "pinguser1"  -GivenName "Ping" -Surname "User1" -DisplayName "Ping User1" -EmailAddress "pinguser1@ping-demos.com" -userPrincipalName "pinguser1@ping-demos.com" -Enabled $true -AccountPassword $defaultPassword -path "OU=UserAccounts,DC=ping-demos,dc=com"
-New-ADUser -Name "pinguser2"  -GivenName "Ping" -Surname "User2" -DisplayName "Ping User2" -EmailAddress "pinguser2@ping-demos.com" -userPrincipalName "pinguser2@ping-demos.com" -Enabled $true -AccountPassword $defaultPassword -path "OU=UserAccounts,DC=ping-demos,dc=com"
+New-ADUser -Name "pinguser1"  -GivenName "Ping" -Surname "User1" -DisplayName "Ping User1" -EmailAddress "pinguser1@workforce.com" -userPrincipalName "pinguser1@workforce.com" -Enabled $true -AccountPassword $defaultPassword -path $ou
+New-ADUser -Name "pinguser2"  -GivenName "Ping" -Surname "User2" -DisplayName "Ping User2" -EmailAddress "pinguser2@workforce.com" -userPrincipalName "pinguser2@workforce.com" -Enabled $true -AccountPassword $defaultPassword -path $ou

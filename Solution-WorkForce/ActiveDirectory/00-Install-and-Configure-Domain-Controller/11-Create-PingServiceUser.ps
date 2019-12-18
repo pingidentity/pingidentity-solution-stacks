@@ -1,14 +1,14 @@
-$ou = "OU=ServiceAccounts,DC=ping-demos,dc=com"
+$ou = "OU=ServiceAccounts,DC=workforce,dc=com"
 $defaultPassword = ConvertTo-SecureString -String "P@ssword99" -AsPlainText -Force
 
-New-ADUser -Name "pingfederate"  -GivenName "Ping" -Surname "Federate" -DisplayName "Ping Federate Service" -userPrincipalName "pingfederate@ping-demos.com" -Enabled $true -AccountPassword $defaultPassword -Path $ou
+New-ADUser -Name "pingfederate"  -GivenName "Ping" -Surname "Federate" -DisplayName "Ping Federate Service" -userPrincipalName "pingfederate@workforce.com" -Enabled $true -AccountPassword $defaultPassword -Path $ou
 
-# Add SPN for Kerberos integration
-Set-ADUser -Identity "pingfederate" -ServicePrincipalNames @{Add="HTTP/workforce-pf.ping-demos.com"}
+# Add SPN for Kerberos integration - Use your PF FQDN
+Set-ADUser -Identity "pingfederate" -ServicePrincipalNames @{Add="HTTP/workforce-pf.workforce.com"}
 
 # Permission to Reset Password
-dsacls ou=UserAccounts,dc=ping-demos,dc=com /I:S /G "pingdemos\pingfederate:CA;Reset Password;user"
-dsacls ou=UserAccounts,dc=ping-demos,dc=com /I:S /G "pingdemos\pingfederate:WP;pwdLastSet;user"
+dsacls ou=UserAccounts,dc=workforce,dc=com /I:S /G "pingdemos\pingfederate:CA;Reset Password;user"
+dsacls ou=UserAccounts,dc=workforce,dc=com /I:S /G "pingdemos\pingfederate:WP;pwdLastSet;user"
 
 # Permission to Unlock Account
-dsacls ou=UserAccounts,dc=ping-demos,dc=com /I:S /G "pingdemos\pingfederate:WP;lockoutTime;user"
+dsacls ou=UserAccounts,dc=workforce,dc=com /I:S /G "pingdemos\pingfederate:WP;lockoutTime;user"
