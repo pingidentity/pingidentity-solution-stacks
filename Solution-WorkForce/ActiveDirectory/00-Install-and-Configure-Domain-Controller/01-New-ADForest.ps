@@ -1,4 +1,4 @@
-$Password = Read-Host -Prompt 'Enter SafeMode Admin Password' -AsSecureString
+$Password = ConvertTo-SecureString -String "safeModePass99" -AsPlainText -Force
 $domainName = 'workforce.com'
 $netbiosName = 'workforce'
 
