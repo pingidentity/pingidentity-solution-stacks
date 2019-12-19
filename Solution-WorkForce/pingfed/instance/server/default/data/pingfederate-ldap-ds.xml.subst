@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ldap:ldap-sources xmlns:ldap="http://pingidentity.com/2004/09/ldap-ds">
     <ldap:ldap-source id="LDAP-63B6BEB8EC75EDD429DD56B79D3A30278D9F6068" maskAttributeValues="false" ldapType="ActiveDirectory" ldapTypeDesc="Active Directory" testOnBorrow="false" testOnReturn="false" createIfNecessary="true" minIdle="10" maxActive="100" maxWait="-1" timeBetweenEvictionRunsMillis="60000" readTimeoutMillis="3000" connTimeoutMillis="3000" verifyHost="false" dnsTtlMillis="60000" ldapDnsSrvPrefix="_ldap._tcp" ldapsDnsSrvPrefix="_ldaps._tcp">
-        <ldap:host>int-ad.solution-wf.ping-eng.com</ldap:host>
+        <ldap:host>${AD_DC_HOST}</ldap:host>
         <ldap:principal>cn=pingfederate,ou=ServiceAccounts,${AD_BASE_DN}</ldap:principal>
         <ldap:use-ssl>true</ldap:use-ssl>
         <ldap:use-dns-srv-records>false</ldap:use-dns-srv-records>

@@ -1,12 +1,18 @@
+# Acceptance of the Ping EULA
+PING_IDENTITY_ACCEPT_EULA=YES
+
 # PF Base URL \ SAML EntityID
-PF_BASE_URL={{Base PF URL}}
+PF_BASE_URL={Base PF URL}
+
 # PF Logging Level
 PF_LOG_LEVEL=INFO
+
 # PingID Properties -- base64 encoded value
-PID_BASE64={{base64 encoded pingid.properties}}
+PID_BASE64={base64 encoded pingid.properties}
+
 # PD User Base DN
 # Default for PD Baseline is `dc=example,dc=com`
-USER_BASE_DN={{Base PD User DN}}
+USER_BASE_DN={Base PD User DN}
 
 
 # PF Base URL \ SAML EntityID
@@ -24,5 +30,6 @@ BASE_ATTRIBUTE=dc: {Base PD Root}
 USER_ORG_BASE={Base PD Root}
 USER_BASE_DN={Base PD User DN}
 
-# AD Base DN
+# AD Variables
+AD_DC_HOST={Host of Domain Controller}
 AD_BASE_DN={Base AD Domain DN}

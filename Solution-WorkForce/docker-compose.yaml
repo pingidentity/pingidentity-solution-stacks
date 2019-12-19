@@ -10,7 +10,6 @@ services:
     environment:
     - SERVER_PROFILE_URL=https://github.com/cprice-ping/Solution-Workforce.git
     - SERVER_PROFILE_PATH=pingfed
-    - PING_IDENTITY_ACCEPT_EULA=YES
     #volumes:
     #  - ${HOME}/projects/devops/volumes/full-stack.pingfederate:/opt/out
     #  - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingfederate:/opt/in
@@ -29,7 +28,6 @@ services:
     environment:
     - SERVER_PROFILE_URL=https://github.com/cprice-ping/Solution-Workforce.git
     - SERVER_PROFILE_PATH=pingdir
-    - PING_IDENTITY_ACCEPT_EULA=YES
     #volumes:
     #  - ${HOME}/projects/devops/volumes/full-stack.pingdirectory:/opt/out
     #  - ${HOME}/projects/devops/pingidentity-server-profiles/baseline/pingdirectory:/opt/in
