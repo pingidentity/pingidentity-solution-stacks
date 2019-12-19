@@ -1,0 +1,5 @@
+# Logon with Domain Admin -- `workforce\Administrator`
+Add-WindowsFeature Adcs-Cert-Authority -IncludeManagementTools
+
+# Install an Enterprise CA
+Install-AdcsCertificationAuthority -CAType EnterpriseRootCa
