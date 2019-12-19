@@ -2,7 +2,9 @@
 Get-DnsClientServerAddress
 
 # Use the IPv4 Network Interface Index 
-Set-DnsClientServerAddress -InterfaceIndex {Index} -ServerAddresses ("{Domain Controller IP}")
+$dcIp = {Domain Controller IP}
+$index = Get-DnsClientServerAddress | Where-Object {$_.InterfaceAlias -like "Ethernet*" -and $_.ServerAddresses -like '*'} | Select-Object InterfaceIndex
+Set-DnsClientServerAddress -InterfaceIndex $index.InterfaceIndex -ServerAddresses ($dcIp)
 
 # Use `sconfig` to Add the CA Server to the Domain - `workforce.com`
 # domainname == workforce.com
