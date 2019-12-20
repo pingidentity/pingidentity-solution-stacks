@@ -45,7 +45,7 @@ In order for PingFed to be able to connect over LDAPS, you will need to export t
 
 I use Apache Directory Studio to connect via LDAPS, store the certificate for this Session, and Export it from there (Preferences --> Connections --> Certificate Validation --> Temporary Trusted).   
   
-The certificate should be the *untitled* one  
+The certificate should show the CN as the Domain Controller **windows** name  
   
 Export this as a `.DER` format and you can import into PingFed.  
 
