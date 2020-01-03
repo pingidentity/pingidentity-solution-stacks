@@ -1,0 +1,318 @@
+dn: $USER_BASE_DN
+objectClass: domain
+objectClass: top
+dc: anycompany
+
+dn: uid=admin,$USER_BASE_DN
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Admin User
+sn: User
+givenName: Admin
+uid: admin
+userPassword: {SSHA256}3YT/YFTM/HicXphNHwK9nKYJlInWL8ugz36oFrVHOtRRZ4/m82SdQ
+ A==
+
+dn: ou=People,$USER_BASE_DN
+objectClass: organizationalUnit
+objectClass: top
+ou: People
+
+dn: uid=user.0,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Anett Rezzik
+sn: Rezzik
+anycompanyCustomAttr: Anett Custom AnyCo attribute
+description: This is the description for Anett Rezzik.
+employeeNumber: 0
+givenName: Anett
+homePhone: +1 295 940 2750
+initials: AOR
+l: Rhinelander
+mail: user.0@anycompany.co
+mobile: +1 164 286 4924
+pager: +1 604 109 3407
+postalAddress: Anett Rezzik$22411 Birch Street$Rhinelander, PA  98160
+postalCode: 98160
+st: PA
+street: 22411 Birch Street
+telephoneNumber: +1 594 307 3495
+uid: user.0
+userPassword: {SSHA256}ejfs3zdGhhyIq0enqjed8+ycHPyp5amk3M8YHPzuRlWwDtYrhuZxC
+ Q==
+
+dn: uid=user.8,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Alessandra Slinkard
+sn: Slinkard
+anycompanyCustomAttr: Aless custom attribute
+description: This is the description for Alessandra Slinkard.
+employeeNumber: 8
+givenName: Alessandra
+homePhone: +1 006 603 9520
+initials: AES
+l: Paducah
+mail: user.8@anycompany.co
+mobile: +1 894 073 2994
+pager: +1 488 422 0506
+postalAddress: Alessandra Slinkard$66610 Sunset Street$Paducah, AZ  72012
+postalCode: 72012
+st: AZ
+street: 66610 Sunset Street
+telephoneNumber: +1 316 457 7669
+uid: user.8
+userPassword: {SSHA256}W3arhaT07qRx1bL7rrMOKvNH+K5Ssk5Sn/gpRkVTZ3Qz9QyTw7rHx
+ g==
+
+dn: uid=user.1,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Romina Valerio
+sn: Valerio
+description: This is the description for Romina Valerio.
+employeeNumber: 1
+givenName: Romina
+homePhone: +1 091 438 1890
+initials: RJV
+l: Alexandria
+mail: user.1@anycompany.co
+mobile: +1 650 622 7719
+pager: +1 472 824 8704
+postalAddress: Romina Valerio$84095 Maple Street$Alexandria, NE  39160
+postalCode: 39160
+st: NE
+street: 84095 Maple Street
+telephoneNumber: +1 319 624 9982
+uid: user.1
+userPassword: {SSHA256}JHbIbWyn15LHjUSP5Q+/OyPwkOsVbhtf8jXOK0a6rLhTPE+UM48oz
+ A==
+
+dn: uid=user.2,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Billye Zaleski
+sn: Zaleski
+anycompanyCustomAttr: Billye Custom Attr
+description: This is the description for Billye Zaleski.
+employeeNumber: 2
+givenName: Billye
+homePhone: +1 399 367 9609
+initials: BEZ
+l: Birmingham
+mail: user.2@anycompany.co
+mobile: +1 045 834 8100
+pager: +1 997 492 6754
+postalAddress: Billye Zaleski$02904 Woodland Street$Birmingham, MN  21554
+postalCode: 21554
+st: MN
+street: 02904 Woodland Street
+telephoneNumber: +1 155 610 1826
+uid: user.2
+userPassword: {SSHA256}4NG1r8CW2b+ya8uXRoOT7z1510GnbZCxUIKlbRpamZF1uiwzXFj5+
+ g==
+
+dn: uid=user.10,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Mort Kurio
+sn: Kurio
+anycompanyCustomAttr: Mort has an AnyCo custom attr
+description: This is the description for Mort Kurio.
+employeeNumber: 10
+givenName: Mort
+homePhone: +1 000 456 2019
+initials: MGK
+l: Minneapolis
+mail: user.10@anycompany.co
+mobile: +1 739 007 0432
+pager: +1 009 621 3545
+postalAddress: Mort Kurio$34002 Tenth Street$Minneapolis, VT  31265
+postalCode: 31265
+st: VT
+street: 34002 Tenth Street
+telephoneNumber: +1 468 116 8643
+uid: user.10
+userPassword: {SSHA256}MfgupeBznL1xELPCqabykH7GefdyIUsLO7oi2HqI9kGBF3zGbX3rR
+ Q==
+
+dn: uid=user.3,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Cho Andros
+sn: Andros
+anycompanyCustomAttr: AnyCompany Cho custom attribute
+description: This is the description for Cho Andros.
+employeeNumber: 3
+givenName: Cho
+homePhone: +1 673 146 2000
+initials: CYA
+l: Watertown
+mail: user.3@anycompany.co
+mobile: +1 837 650 2500
+pager: +1 863 739 1102
+postalAddress: Cho Andros$04724 Center Street$Watertown, DE  48299
+postalCode: 48299
+st: DE
+street: 04724 Center Street
+telephoneNumber: +1 860 145 1038
+uid: user.3
+userPassword: {SSHA256}te1LR5ODSF68v1LFzn9z/dPpTMF7EWeVk8B596rhO+TSMk0849cla
+ Q==
+
+dn: uid=user.4,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Abagael Stellwag
+sn: Stellwag
+anycompanyCustomAttr: 123455 Custom
+description: This is the description for Abagael Stellwag.
+employeeNumber: 4
+givenName: Abagael
+homePhone: +1 539 780 2958
+initials: ARS
+l: Fort Worth
+mail: user.4@anycompany.co
+mobile: +1 306 351 0544
+pager: +1 642 006 0247
+postalAddress: Abagael Stellwag$28818 Walnut Street$Fort Worth, IA  00220
+postalCode: 00220
+st: IA
+street: 28818 Walnut Street
+telephoneNumber: +1 523 594 0171
+uid: user.4
+userPassword: {SSHA256}1ahIS4RANBKossXyqufMfoHL0QHvZ7PEp7rD+XWAWvz/rTwyOa23p
+ Q==
+
+dn: uid=user.5,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Gilles Benzie
+sn: Benzie
+anycompanyCustomAttr: This is Gilles custom
+description: This is the description for Gilles Benzie.
+employeeNumber: 5
+givenName: Gilles
+homePhone: +1 470 664 0850
+initials: GKB
+l: Urbana
+mail: user.5@anycompany.co
+mobile: +1 918 141 3270
+pager: +1 032 521 7743
+postalAddress: Gilles Benzie$10076 Wilson Street$Urbana, UT  35266
+postalCode: 35266
+st: UT
+street: 10076 Wilson Street
+telephoneNumber: +1 062 173 4301
+uid: user.5
+userPassword: {SSHA256}JdJpvsW9VlRUh6CTgsWPF0DzSuEKC29XvBqLRg9eL0Cf05yi4LkbX
+ Q==
+
+dn: uid=user.6,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Fawnia Beattie
+sn: Beattie
+anycompanyCustomAttr: Fawnia loves AnyCompany
+description: This is the description for Fawnia Beattie.
+employeeNumber: 6
+givenName: Fawnia
+homePhone: +1 538 763 1811
+initials: FDB
+l: Glendive
+mail: user.6@anycompany.co
+mobile: +1 803 725 2508
+pager: +1 646 154 4334
+postalAddress: Fawnia Beattie$35490 Thirteenth Street$Glendive, IN  25692
+postalCode: 25692
+st: IN
+street: 35490 Thirteenth Street
+telephoneNumber: +1 057 038 0028
+uid: user.6
+userPassword: {SSHA256}D6HpDk40tE0agCaiR4r/FMKU1AslYD+x6y5V2Y7ll9YSh+euAKh9M
+ g==
+
+dn: uid=user.7,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Digby Shaughnessy
+sn: Shaughnessy
+anycompanyCustomAttr: Digby's AnyCo attribute
+description: This is the description for Digby Shaughnessy.
+employeeNumber: 7
+givenName: Digby
+homePhone: +1 005 370 0244
+initials: DAS
+l: Salisbury
+mail: user.7@anycompany.co
+mobile: +1 689 801 1409
+pager: +1 190 451 5765
+postalAddress: Digby Shaughnessy$94660 Hillcrest Street$Salisbury, GA  51821
+postalCode: 51821
+st: GA
+street: 94660 Hillcrest Street
+telephoneNumber: +1 445 507 0313
+uid: user.7
+userPassword: {SSHA256}zNP6sM7Malab4+Pmef6ZFfF2GWwOaA8Kbap1MoCIVD5Pcenz8iW6L
+ g==
+
+dn: uid=user.9,ou=People,$USER_BASE_DN
+objectClass: anycompanyUser
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: Karly Guttman
+sn: Guttman
+anycompanyCustomAttr: 99999 Custom
+description: This is the description for Karly Guttman.
+employeeNumber: 9
+givenName: Karly
+homePhone: +1 489 385 3839
+initials: KJG
+l: Sacramento
+mail: user.9@anycompany.co
+mobile: +1 520 576 7900
+pager: +1 389 306 1582
+postalAddress: Karly Guttman$36088 Mill Street$Sacramento, MI  26075
+postalCode: 26075
+st: MI
+street: 36088 Mill Street
+telephoneNumber: +1 806 980 3592
+uid: user.9
+userPassword: {SSHA256}AO1+nOkgBsTVeJq2WodXCLEaM9LPfcbv3SegdByiS8qkUu9wR6xaB
+ w==
+

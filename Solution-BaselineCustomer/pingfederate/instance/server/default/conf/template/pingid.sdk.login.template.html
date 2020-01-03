@@ -1,0 +1,541 @@
+#*
+The server renders this HTML page in an end-user's browser
+when the user authenticates. It displays a spinner
+
+Velocity variables (identified by the $ character) are generated
+at runtime by the server.
+
+Change text or formatting as needed. Modifying Velocity statements
+is not recommended as it may interfere with expected server behavior.
+*#
+
+<!--
+template name: pingid.sdk.authenticating.template.html
+version: 1.1
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+#if($status == "error" && $errorReason == "sessionExpired")
+  <title>$messages.getMessage("pingid.sdk.title.error.expired")</title>
+#else
+  <title>$messages.getMessage("pingid.sdk.title.$status")</title>
+#end
+  <meta name="robots" content="noindex, nofollow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/pingid-sdk-web/js/functions.js"></script>
+  <link rel="stylesheet" media="all" type="text/css" href="/pingid-sdk-web/css/main.css" />
+</head>
+#if($status == "in_progress")
+<body onload="startAuthenticating(&quot;$resumePath&quot;, &quot;$csrfToken&quot;)">
+#elseif($status == "qr_code")
+<body onload="initializeQRCodeSection(&quot;$resumePath&quot;, &quot;$csrfToken&quot;, $useDeepLink, $connectionError)">
+#elseif($status == "select_device" || $status == "change_device")
+<body onload="initializeSelectDeviceBlock()">
+#elseif($status == "user_selection")
+<body onload="initializeSelectUserBlock(&quot;$resumePath&quot;, &quot;$csrfToken&quot; ,$mobileAccessFlow)">
+#elseif($showAndContinue)
+<body onload="finalize()">
+#else
+<body>
+#end
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <img class="ping-logo modal-logo" src="/pingid-sdk-web/images/ping-logo.gif" />
+        <div class="dialog">
+#if($status == "in_progress")
+            <!-- AUTHENTICATING SECTION BEGIN-------------------------------------------------------------------------------------->
+           <div id="$status" class="window authenticating">
+                <div class="content">
+                    <div class="status">
+                        <img class="spinner" src="/pingid-sdk-web/images/spinner.gif" />
+                    </div>
+                    #if($device)
+                    <div class="text device">
+                        $messages.getMessage("pingid.sdk.authenticating.label.authenticating.on")
+                        <div class="device-name">
+                            $device.label
+                        </div>
+                    </div>
+                    #end
+                    <div class="text">
+                        $messages.getMessage("pingid.sdk.authenticating.label.authenticating")
+                    </div>
+                    #if($changeDevice)
+                    <div class="buttons buttons__offset">
+                        <a class="button" onclick="changeDevice(this)" href="javascript:void(0);">$messages.getMessage("pingid.sdk.authenticating.button.change.device")</a>
+                    </div>
+                    #end
+                </div>
+            </div>
+            <!-- AUTHENTICATING SECTION END--------------------------------------------------------------------------------------->
+#elseif($status == "select_device")
+            <!-- DEVICE SELECTION SECTION BEGIN ---------------------------------------------------------------------------------->
+            <div id="$status" class="window change-device">
+                <div class="content">
+                  <form id="select-device-form" action="$resumePath" method="post">
+                  	<div class="title">
+                  	    #if($newDevice)
+                  	     $messages.getMessage("pingid.sdk.select.device.new.device.label.select.device")
+                  	    #else
+                       	 $messages.getMessage("pingid.sdk.select.device.label.select.device")
+                       	#end
+                    </div>
+                    <ul class="device-list">
+                        #set($index = 0)
+						#foreach($device in $devices)
+						 #if($index == 0)
+						    #set($selected = "selected")
+						 #else
+						     #set($selected = "")
+						 #end
+
+						 <li class="${device.cssStyles} $selected" data-id="${device.id}">
+							<a>
+							    $device.label
+							    #if($device.maskedSubLabel)
+								<div class="device-name">$device.maskedSubLabel</div>
+								#end
+							</a>
+						 </li>
+						#set($index = ($index + 1))
+						#end
+					</ul>
+					<input type="hidden" name="deviceId" id="deviceId" value="${selectedDeviceId}" encode="false" />
+					<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+                    <div class="buttons buttons__offset">
+                         #set($selectDeviceSubmitButton = $messages.getMessage("pingid.sdk.select.device.button.authenticate"))
+                        <input type="Submit" onclick="this.disabled=true;this.form.submit();" value="$selectDeviceSubmitButton" class="primary" />
+                    </div>
+                  </form>
+                </div>
+            </div>
+			<!-- DEVICE SELECTION SECTION END --------------------------------------------------------------------------------------->
+#elseif($status == "change_device")
+            <!-- CHANGE DEVICE SECTION BEGIN ---------------------------------------------------------------------------------------->
+            <div id="$status" class="window change-device">
+                <div class="content">
+                  <form id="change-device-form" action="$resumePath" method="post">
+                  	<div class="title">
+                       	$messages.getMessage("pingid.sdk.change.device.label.change.device")
+                    </div>
+                    <ul class="device-list">
+                        #set($index = 0)
+						#foreach($device in $devices)
+						 #if($index == 0)
+						    #set($selected = "selected")
+						 #else
+						     #set($selected = "")
+						 #end
+
+						 <li class="${device.cssStyles} $selected" data-id="${device.id}">
+							<a>
+							    $device.label
+							    #if($device.maskedSubLabel)
+								<div class="device-name">$device.maskedSubLabel</div>
+								#end
+							</a>
+						 </li>
+						#set($index = ($index + 1))
+						#end
+					</ul>
+					<input type="hidden" name="deviceId" id="deviceId" value="${selectedDeviceId}" encode="false" />
+					<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+                    <div class="buttons buttons__offset">
+                         #set($changeDeviceSubmitButton = $messages.getMessage("pingid.sdk.change.device.button.authenticate"))
+                        <input type="Submit" onclick="this.disabled=true;this.form.submit();" value="$changeDeviceSubmitButton" class="primary" />
+                    </div>
+                  </form>
+                </div>
+            </div>
+			<!-- CHANGE DEVICE SECTION END ------------------------------------------------------------------------------------------->
+#elseif($status == "approved")
+        		<!-- APPROVED SECTION BEGIN ---------------------------------------------------------------------------------------------->
+            <div id="$status" class="window authenticated">
+                <div class="content">
+                    <div class="status"></div>
+                    #if($approvedReason == "authenticationToken")
+                    <div class="text">$messages.getMessage("pingid.sdk.authenticated.label.authentication.token.authenticated")</div>
+                    #else
+                    <div class="text">$messages.getMessage("pingid.sdk.authenticated.label.authenticated")</div>
+                    #end
+                </div>
+            </div>
+            <!-- APPROVED SECTION END -------------------------------------------------------------------------------------------------->
+#elseif($status == "bypassed_device")
+        		<!-- BYPASSED DEVICE BLOCK BEGIN ------------------------------------------------------------------------------------------->
+            <div id="$status" class="window authenticated">
+                <div class="content">
+                    <div class="status"></div>
+                    <div class="text">$messages.getMessage("pingid.sdk.bypassed.device.label.bypassed.device")</div>
+                </div>
+            </div>
+            <!-- BYPASSED DEVICE SECTION END -------------------------------------------------------------------------------------------->
+#elseif($status == "user_suspended")
+        		<!-- USER SUSPENDED SECTION BEGIN ------------------------------------------------------------------------------------------->
+            <div id="$status" class="window disabled">
+                <div class="content">
+                    <div class="status"></div>
+                    <div class="text">$messages.getMessage("pingid.sdk.user.suspended.label.user.suspended")</div>
+                </div>
+            </div>
+            <!-- USER SUSPENDED SECTION END ----------------------------------------------------------------------------------------------->
+#elseif($status == "ignored_device")
+        		<!-- IGNORED DEVICE SECTION BEGIN --------------------------------------------------------------------------------------------->
+            <div id="$status" class="window authenticated">
+                <div class="content">
+                    <div class="status"></div>
+                    <div class="text">$messages.getMessage("pingid.sdk.ignored.device.label.ignored.device")</div>
+                </div>
+            </div>
+            <!-- IGNORED DEVICE SECTION END ----------------------------------------------------------------------------------------------->
+#elseif($status == "rejected")
+        		<!-- REJECTED SECTION BEGIN --------------------------------------------------------------------------------------------------->
+            <div id="$status" class="window blocked">
+                <div class="content">
+                    <div class="status"></div>
+                    #if($rejectReason == "unabledToAutoPairFromWeb")
+                    <div class="title-text">
+                        $messages.getMessage("pingid.sdk.rejected.label.rejected")
+                    </div>
+                     <div class="error-text">
+                      <div class="text">$messages.getMessage("pingid.sdk.rejected.label.rejected.unable.to.pair")</div>
+                     </div>
+                    #elseif($rejectReason == "inactiveUser")
+                     <div class="title-text">
+                        $messages.getMessage("pingid.sdk.rejected.label.rejected")
+                    </div>
+                     <div class="error-text">
+                      <div class="text">$messages.getMessage("pingid.sdk.rejected.label.rejected.inactive.user")</div>
+                     </div>
+                    #elseif($rejectReason == "blockedByUser")
+                       <div class="text">$messages.getMessage("pingid.sdk.rejected.label.blocked")</div>
+                    #elseif($rejectReason == "deviceIsBlocked")
+                       <div class="text">$messages.getMessage("pingid.sdk.rejected.label.device.blocked")</div>
+                    #elseif($rejectReason == "authenticationTokenExtraPushNotificationFailed")
+                       <div class="text">$messages.getMessage("pingid.sdk.authentication.token.rejected.label.rejected")</div>
+                    #elseif($rejectReason == "deviceIsRooted")
+	                    <div class="title-text">
+	                        $messages.getMessage("pingid.sdk.rejected.label.rejected")
+	                    </div>
+	                     <div class="error-text">
+	                      <div class="text">$messages.getMessage("pingid.sdk.rejected.label.device.is.rooted")</div>
+	                     </div>
+                    #else
+                     <div class="text">$messages.getMessage("pingid.sdk.rejected.label.rejected")</div>
+                    #end
+                </div>
+            </div>
+            <!-- REJECTED SECTION END -------------------------------------------------------------------------------------------------->
+#elseif($status == "locked")
+        		<!-- LOCKED SECTION BEGIN ---------------------------------------------------------------------------------------------->
+            <div id="$status" class="window blocked">
+                <div class="content">
+                    <div class="status"></div>
+                    <div class="text">$messages.getMessage("pingid.sdk.locked.label.locked")</div>
+                </div>
+            </div>
+            <!-- LOCKED BLOCK END -------------------------------------------------------------------------------------------------->
+#elseif($status == "timeout")
+            <!-- TIMEOUT SECTION BEGIN-------------------------------------------------------------------------------------------------------->
+            <div id="$status" class="window timedout">
+                <div class="content">
+                    <div class="status"></div>
+                    <div class="text">
+                        $messages.getMessage("pingid.sdk.timeout.label.timeout")
+                    </div>
+                    <div class="buttons buttons__offset">
+                        <a class="button primary" onclick="onLinkClick(this);document.retryForm.submit();" href="javascript:void(0);">$messages.getMessage("pingid.sdk.timeout.button.retry")</a>
+                    </div>
+                </div>
+            </div>
+            <!-- TIMEOUT SECTION END-------------------------------------------------------------------------------------------------------->
+ #elseif($status == "canceled")
+            <!-- CANCELED SECTION BEGIN-------------------------------------------------------------------------------------------------------->
+            <div id="$status" class="window blocked">
+                <div class="content">
+                    <div class="status"></div>
+                    <div class="text">
+                        #if($cancelReason && $cancelReason == "deniedByUser")
+                          $messages.getMessage("pingid.sdk.canceled.label.denied.by.user")
+                        #elseif($cancelReason && $cancelReason == "authenticationToken")
+                          $messages.getMessage("pingid.sdk.canceled.label.authenication.token.rejected")
+                        #elseif($cancelReason && $cancelReason == "canceledByUser")
+                          $messages.getMessage("pingid.sdk.canceled.label.canceled.by.user")
+                        #else
+                           $messages.getMessage("pingid.sdk.canceled.label.canceled")
+                        #end
+                    </div>
+                    <div class="buttons buttons__offset">
+                        #if($changeDevice)
+                        <a class="button" onclick="onLinkClick(this);document.changeDeviceForm.submit();" href="javascript:void(0);">$messages.getMessage("pingid.sdk.canceled.button.change.device")</a>
+                        #end
+                    </div>
+                </div>
+            </div>
+            <!-- CANCELED SECTION END-------------------------------------------------------------------------------------------------------->
+  #elseif($status == "error" && $errorReason == "sessionExpired")
+            <!-- SESSION EXPIRED SECTION BEGIN----------------------------------------------------------------------------------------------->
+            <div id="$status" class="window timedout">
+                <div class="content">
+                    <div class="status"></div>
+                    <div class="text">
+                       $messages.getMessage("pingid.sdk.error.label.error.session.expired")
+                    </div>
+                </div>
+            </div>
+  			<!-- SESSION EXPIRED SECTION END------------------------------------------------------------------------------------------------>
+  #elseif($status == "error")
+            <!-- ERROR SECTION BEGIN-------------------------------------------------------------------------------------------------------->
+            <div id="$status" class="window error">
+                <div class="content">
+                    <div class="status"></div>
+                    <div class="title-text">
+                        $messages.getMessage("pingid.sdk.error.label.error")
+                    </div>
+                    <div class="error-text">
+                        <div class="text">
+                             #if($errorReason == "smsQuotaExceeded" || $errorReason == "voiceQuotaExceeded")
+                              $messages.getMessage("pingid.sdk.error.label.error.sms.voice.quota.exceeded")
+                             #elseif($errorReason == "smsNotEnabled")
+                              $messages.getMessage("pingid.sdk.error.label.error.sms.not.enabled")
+                             #elseif($errorReason == "voiceNotEnabled")
+                              $messages.getMessage("pingid.sdk.error.label.error.voice.not.enabled")
+                             #elseif($errorReason == "emailNotEnabled")
+                              $messages.getMessage("pingid.sdk.error.label.error.email.not.enabled")
+                             #elseif($errorReason == "deviceBlocked")
+                              $messages.getMessage("pingid.sdk.error.label.error.device.blocked")
+                             #elseif($errorReason == "applicationDisabled")
+                              $messages.getMessage("pingid.sdk.error.label.error.application.disabled")
+                             #elseif($errorReason == "heartbeatFailure")
+                               $messages.getMessage("pingid.sdk.error.label.error.heartbeat.failure")
+                             #else
+                              $messages.getMessage("pingid.sdk.error.label.error.details")
+                             #end
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ERROR SECTION END-------------------------------------------------------------------------------------------------------->
+ #elseif($status == "otp" || $status == "invalid_otp")
+            <!-- OTP SECTION BEGIN-------------------------------------------------------------------------------------------------------->
+            <div class="window settings">
+        		  <div class="content">
+        		    <form id="otp-form" action="$resumePath" method="post">
+        		        #if($status == "invalid_otp")
+                    <div class="error-message show">
+                         $messages.getMessage("pingid.sdk.otp.label.invalid.otp")
+                    </div>
+                    #end
+					#if($newDevice)
+        			     <h1>$messages.getMessage("pingid.sdk.otp.label.pairing.header")</h1>
+					#else
+					 <h1>$messages.getMessage("pingid.sdk.otp.label.header")</h1>
+					#end
+                    <div class="success-message">
+                        #if($newDevice && $device.type == "SMS")
+                           $messages.getMessage("pingid.sdk.otp.label.sms.pairing", "", "$device.maskedSubLabel")
+                        #elseif($newDevice && $device.type == "Voice")
+                           $messages.getMessage("pingid.sdk.otp.label.voice.pairing", "", "$device.maskedSubLabel")
+                        #elseif($newDevice && $device.type == "Email")
+                           $messages.getMessage("pingid.sdk.otp.label.email.pairing", "", "$device.maskedSubLabel")
+                        #elseif($newDevice)
+                           $messages.getMessage("pingid.sdk.otp.label.mobile.pairing", "", "$device.label")
+                        #elseif($device.type == "SMS")
+                          $messages.getMessage("pingid.sdk.otp.label.sms.authentication", "", "$device.maskedSubLabel")
+                        #elseif($device.type == "Voice")
+                          $messages.getMessage("pingid.sdk.otp.label.voice.authentication", "", "$device.maskedSubLabel")
+                        #elseif($device.type == "Email")
+                          $messages.getMessage("pingid.sdk.otp.label.email.authentication", "", "$device.maskedSubLabel")
+                        #else
+                          $messages.getMessage("pingid.sdk.otp.label.mobile.authentication", "", "$device.label")
+                        #end
+                    </div>
+                    <p>
+                       #if($newDevice && ($device.type == "SMS" || $device.type == "Voice" || $device.type == "Email"))
+                         $messages.getMessage("pingid.sdk.otp.label.offline.pairing.instructions")
+                       #elseif($newDevice)
+                         $messages.getMessage("pingid.sdk.otp.label.mobile.pairing.instructions")
+                       #elseif($device.type == "SMS" || $device.type == "Voice" || $device.type == "Email")
+                         $messages.getMessage("pingid.sdk.otp.label.offline.instructions")
+                       #else
+                         $messages.getMessage("pingid.sdk.otp.label.mobile.instructions")
+                       #end
+                    </p>
+					<input type="text" class="passcode-input" id="OTP" name="OTP" value="" autocomplete="off" maxlength="6" onInput="validateOtp(this.value)">
+					<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+                    <div class="call-again-link">
+                        #if($device.type == "SMS"  || $device.type == "Email")
+                        <a onclick="onLinkClick(this);document.retryForm.submit();" href="javascript:void(0);">$messages.getMessage("pingid.sdk.otp.label.offline.retry")</a>
+                        #elseif($device.type == "Voice")
+                        <a onclick="onLinkClick(this);document.retryForm.submit();" href="javascript:void(0);">$messages.getMessage("pingid.sdk.otp.label.voice.retry")</a>
+                        #else
+                        <a onclick="onLinkClick(this);document.retryForm.submit();" href="javascript:void(0);">$messages.getMessage("pingid.sdk.otp.label.mobile.retry")</a>
+                        #end
+                    </div>
+
+                    <div class="buttons buttons__offset">
+                        #if($changeDevice)
+                        <a class="button" onclick="onLinkClick(this);document.changeDeviceForm.submit();" href="javascript:void(0);">$messages.getMessage("pingid.sdk.otp.button.change.device")</a>
+                        #end
+                        #set($otpSubmitButton = $messages.getMessage("pingid.sdk.otp.button.sign.on"))
+                        <input onclick="this.disabled=true;this.form.submit();" type="submit" id="submitButton" value="$otpSubmitButton" class="primary" disabled>
+                    </div>
+                  </form>
+        		  </div>
+	        </div>
+            <!-- OTP SECTION END --------------------------------------------------------------------------------------------------------->
+ #elseif($status == "qr_code")
+			<!-- QR CODE SECTION BEGIN---------------------------------------------------------------------------------------------------->
+
+            <!-- QR CODE IMAGE SECTION BEGIN -->
+            <div id="$status" class="window qr-code">
+                <div class="content">
+                    <div>
+                    		 <img id="grayQrCodeImg" class="qrcode-image" alt="QR Code" src="$grayQRCodeImg"/>
+                    		<!-- $grayQRCodeImg is gray on white background. $blackQRCodeImg is black on white background -->
+                    		 <!-- <img id="blackQrCodeImg" class="qrcode-image" alt="QR Code" src="$blackQRCodeImg"/>  -->
+                    </div>
+                    #if($useDeepLink)
+                    		<a class="link--primary" onclick="goToDeepLink()" href="javascript:void(0);">$messages.getMessage("pingid.sdk.qrcode.deep.link.button.use.deep.link")</a>
+                    #end
+                    <div class="text--default">
+                        #if($userExists)
+                        		$messages.getMessage("pingid.sdk.qrcode.label.authenticating.with")
+                        #else
+                        		$messages.getMessage("pingid.sdk.qrcode.label.sign.on.with")
+                        #end
+                        <div class="text--bold">
+                            $messages.getMessage("pingid.sdk.qrcode.label")
+                        </div>
+                    </div>
+                    <div class="buttons buttons__offset">
+                    	#if($changeDevice)
+                    		<a class="button" onclick="changeDevice(this)" href="javascript:void(0);">$messages.getMessage("pingid.sdk.authenticating.button.change.device")</a>
+                    	#end
+                    	#if(!$userExists)
+                    	    <!-- uncomment the following line if you "cancel" is supported -->
+                            <!--  <a class="button" onclick="cancelQRCode(this)" href="javascript:void(0);">$messages.getMessage("pingid.sdk.authenticating.button.qrcode.cancel")</a> -->
+                        #end
+                    </div>
+                </div>
+           </div>
+            <!-- QR CODE IMAGE SECTION END --->
+
+            <!-- QR CODE LINK SECTION BEGIN -->
+            <div id="qr_code_deep_link" class="window qr-code">
+                <div class="content">
+                     <div>
+                          #if($userExists)
+                                 <a id="qrCodeLink" class="button primary" href="$qrCodeLink">$messages.getMessage("pingid.sdk.qrcode.deep.link.button.authenticate")</a>
+                             #else
+                                 <a id="qrCodeLink" class="button primary"  href="$qrCodeLink">$messages.getMessage("pingid.sdk.qrcode.deep.link.button.sign.on")</a>
+                             #end
+                     </div>
+                     <div>
+                             <a class="link--primary" onclick="useQrCode()" href="javascript:void(0);">$messages.getMessage("pingid.sdk.qrcode.deep.link.button.use.qr.code")</a>
+                     </div>
+                     <div class="text--default">
+                         #if($userExists)
+                                 $messages.getMessage("pingid.sdk.qrcode.label.authenticating.with")
+                         #else
+                                 $messages.getMessage("pingid.sdk.qrcode.label.sign.on.with")
+                         #end
+                         <div class="text--bold">
+                             $messages.getMessage("pingid.sdk.qrcode.label")
+                         </div>
+                     </div>
+                    <div class="buttons buttons__offset">
+                         #if($changeDevice)
+                             <a class="button" onclick="changeDevice(this)" href="javascript:void(0);">$messages.getMessage("pingid.sdk.authenticating.button.change.device")</a>
+                         #end
+                         #if(!$userExists)
+                            <!-- uncomment the following line if you "cancel" is supported -->
+                            <!-- <a class="button" onclick="cancelQRCode(this)" href="javascript:void(0);">$messages.getMessage("pingid.sdk.authenticating.button.qrcode.cancel")</a>  -->
+                         #end
+                    </div>
+                </div>
+          </div>
+           <!-- QR CODE LINK SECTION END -->
+
+		   <!-- QR CODE SECTION END------------------------------------------------------------------------------------------------------>
+ #elseif($status == "user_selection")
+            <!-- USER SELECTION SECTION BEGIN ---------------------------------------------------------------------------------------->
+            <div id="$status" class="window choose-user">
+                <div class="content">
+                  <form id="select-user-form" action="$resumePath" method="post">
+                  	<div class="title">
+                       	$messages.getMessage("pingid.sdk.user.selection.label.choose.user")
+                    </div>
+                    <ul class="user-list">
+                        #set($index = 0)
+						#foreach($user in $users)
+						 <li class="user user-select" id="${user.username}" data-id="${user.username}">
+							<a>
+							    $user.displayName
+							</a>
+						 </li>
+						#set($index = ($index + 1))
+						#end
+					</ul>
+					<input type="hidden" name="username" id="username" value="" encode="false" />
+					<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+                    <div class="buttons buttons__offset">
+                         #set($selectUserButton = $messages.getMessage("pingid.sdk.user.selection.button.sign.on"))
+                         #if($mobileAccessFlow)
+                             <input type="Submit" onclick="this.disabled=true;this.form.submit();" value="$selectUserButton" class="primary" id="select-user-button" disabled/>
+                         #else
+                        	    <input onclick="onSelectUserClick(this, &quot;$resumePath&quot, &quot;$csrfToken&quot)" type="button" id="select-user-button" value="$selectUserButton" class="primary" disabled>
+                         #end
+                    </div>
+    				 </form>
+                </div>
+            </div>
+			<!-- USER SELECTION SECTION END ------------------------------------------------------------------------------------------->
+ #end
+#set($adminMessage = $messages.getMessage("pingid.sdk.admin.message"))
+#if($adminMessage && $adminMessage.length() > 0)
+            <div class="admin-message">
+               $adminMessage
+            </div>
+#end
+        </div>
+        <footer>
+                <div class="powered-by-pingidentity"></div>
+                <div class="copyright">Copyright &copy; 2003 - 2019 Ping Identity Corporation. All rights reserved.</div>
+        </footer>
+    </div>
+</div>
+
+<!-- LOADING PAGE BEGIN -->
+<div id="loading-page" class="loading-page hide">
+	<div>
+    		<img class="loading-page__spinner" src="/pingid-sdk-web/images/spinner.gif" />
+        <div>$messages.getMessage("pingid.sdk.loading.page.label")</div>
+          <!-- uncomment the following line if you "cancel" is supported -->
+          <!-- <a class="button loading-page__cancel" onclick="cancelQRCode(this)" href="javascript:void(0);">$messages.getMessage("pingid.sdk.authenticating.button.qrcode.cancel")</a>  -->
+	</div>
+</div>
+<!-- LOADING PAGE END -->
+
+<form id="finalizeForm" name="finalizeForm" action="$resumePath" method="post">
+ 	<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+</form>
+<form id="changeDeviceForm" name="changeDeviceForm" action="$resumePath?change_device=1" method="post">
+ 	<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+</form>
+<form id="retryForm" name="retryForm" action="$resumePath?retry=1" method="post">
+ 	<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+</form>
+<form id="cancelQRCodeForm" name="cancelQRCodeForm" action="$resumePath?cancel=1&action=canceled" method="post">
+ 	<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+</form>
+<form id="systemErrorForm" name="systemErrorForm" action="$resumePath?systemError=1" method="post">
+ 	<input type="hidden" name="csrfToken" id="csrfToken" value="$csrfToken" encode="false"/>
+</form>
+</body>
+</html>

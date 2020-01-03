@@ -1,0 +1,14 @@
+ID=1447043
+Name=Remy Lyle Regional Solutions Arch
+Organization=68
+Product=PingFederate
+Version=9.3
+IssueDate=2019-10-21
+EnforcementType=2
+ExpirationDate=2019-12-20
+Tier=Subscription
+SaasProvisioning=true
+WSTrustSTS=true
+OAuth=true
+SignCode=FF0F
+Signature=302C0214322DD1255AD8A0C5ACE92EBF1C1CB59793923BD70214760D147BE3FC0E36B7F630E15884493130E2CB47

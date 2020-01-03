@@ -1,0 +1,8 @@
+dn: cn=schema
+objectClass: top
+objectClass: ldapSubentry
+objectClass: subschema
+cn: schema
+attributeTypes: ( anycompanyCustomAttr-OID NAME 'anycompanyCustomAttr' DESC 'Custom Attribute for AnyCompany' USAGE userApplications )
+objectClasses: ( anycompanyUser-OID NAME 'anycompanyUser' AUXILIARY MAY anycompanyCustomAttr )
+

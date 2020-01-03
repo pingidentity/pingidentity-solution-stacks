@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:AdapterConfiguration isInheritExtendedContractAttributes="false" name="com.pingidentity.pf.datastore.other.RestDataSourceDriver" xmlns:urn="urn:sourceid.org:saml2:adapter:conf">
+    <urn:Fields>
+        <urn:Field name="Base URL">https://api.pingone.com/v1/environments/5fef7006-d1c0-4874-8a44-76962beab563/</urn:Field>
+        <urn:Field name="Authentication Method">OAuth 2.0 Bearer Token</urn:Field>
+        <urn:Field name="Username"/>
+        <urn:Field name="Password"/>
+        <urn:Field name="OAuth Token Endpoint">https://auth.pingone.com/5fef7006-d1c0-4874-8a44-76962beab563/as/token</urn:Field>
+        <urn:Field name="OAuth Scope"/>
+        <urn:Field name="Client ID">cf927324-5719-44f7-b0d9-2a64216bfb59</urn:Field>
+        <urn:Field name="Client Secret">eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoidUxCZG9UaDZKWCIsInZlcnNpb24iOiI5LjMuMC45In0..DHqGOP35irPwMBU3bCj3kg.JSJtfPF6AUmVEV3lpJOBvjV300mXhU6PG-h4DUtqbUwQMJlreM9GLnUGnsftY5gzv809WKl7IRqj_zhx7UCIU13YQkHxpymdt6gS8tFNDIU.aa0cIvjbT4oGbVM93btjvA</urn:Field>
+        <urn:Field name="Enable HTTPS Hostname Verification">true</urn:Field>
+        <urn:Field name="Read Timeout (ms)">10000</urn:Field>
+        <urn:Field name="Connection Timeout (ms)">10000</urn:Field>
+        <urn:Field name="Max Payload Size (KB)">1024</urn:Field>
+        <urn:Field name="Retry Request">true</urn:Field>
+        <urn:Field name="Maximum Retries Limit">5</urn:Field>
+        <urn:Field name="Retry Error Codes">429</urn:Field>
+        <urn:Field name="Test Connection URL">https://api.pingone.com/v1/environments/5fef7006-d1c0-4874-8a44-76962beab563/users/447f56a2-b656-446a-a33a-c6852d7837e4</urn:Field>
+    </urn:Fields>
+    <urn:AdvancedFields>
+        <urn:Field name="Enable HTTPS Hostname Verification">true</urn:Field>
+        <urn:Field name="Read Timeout (ms)">10000</urn:Field>
+        <urn:Field name="Connection Timeout (ms)">10000</urn:Field>
+        <urn:Field name="Max Payload Size (KB)">1024</urn:Field>
+        <urn:Field name="Retry Request">true</urn:Field>
+        <urn:Field name="Maximum Retries Limit">5</urn:Field>
+        <urn:Field name="Retry Error Codes">429</urn:Field>
+        <urn:Field name="Test Connection URL">https://api.pingone.com/v1/environments/5fef7006-d1c0-4874-8a44-76962beab563/users/447f56a2-b656-446a-a33a-c6852d7837e4</urn:Field>
+    </urn:AdvancedFields>
+    <urn:Tables>
+        <urn:Table name="HTTP Request Headers"/>
+        <urn:Table name="Attributes">
+            <urn:Row>
+                <urn:Field name="Local Attribute">name</urn:Field>
+                <urn:Field name="JSON Response Attribute Path">/_embedded/users/0/name/given</urn:Field>
+            </urn:Row>
+        </urn:Table>
+    </urn:Tables>
+</urn:AdapterConfiguration>

@@ -1,0 +1,21 @@
+# Copyright 2018-2019 Ping Identity Corporation
+# All Rights Reserved.
+#
+
+#
+# This file provides an example LDAP base entry for use with the Consent Service.
+# It may be loaded by running the following command:
+#
+#    ldapmodify --defaultAdd --filename consent-service-base-entries.ldif
+#
+# You should edit this file as needed to suit your environment.
+#
+
+#
+# The Consent Service base DN, which contains consent records.
+#
+dn: ou=consents,$USER_BASE_DN
+objectClass: top
+objectClass: organizationalUnit
+ou: consents
+
