@@ -21,8 +21,8 @@ services:
     env_file:
       - ~/.pingidentity/devops
     environment: 
-        - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
-        - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingfederate
+      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
+      - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingfederate
     ports:
       - 9031:9031
       - 9999:9999
@@ -37,8 +37,8 @@ services:
     env_file:
       - ~/.pingidentity/devops
     environment: 
-        - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
-        - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingdirectory
+      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
+      - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingdirectory
       - USER_BASE_DN=dc=anycompany,dc=co
       - VERBOSE=true
     ports:
