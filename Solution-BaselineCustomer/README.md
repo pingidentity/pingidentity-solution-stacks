@@ -22,11 +22,11 @@ Step-By-Step:
 2. cd pingidentity-solution-stacks/
 3. cd Solution-BaselineCustomer/
 4. (OPTIONAL) - If you are making changes to my YAML file - Backup the existing docker-compose.yaml
-5. cp docker-compose.yaml docker-compose.yaml.bak
-6. Run docker-compose docker-compose up -d
-7. On your personal machine, change your hosts file to point to the IP address of your Docker engine host and add the following entries. (And yes, I may change this for the future but just keeping it simple for now)
+-    cp docker-compose.yaml docker-compose.yaml.bak
+5. Run docker-compose docker-compose up -d
+6. On your personal machine, change your hosts file to point to the IP address of your Docker engine host and add the following entries. (And yes, I may change this for the future but just keeping it simple for now)
 X.X.X.X pingfederate pingaccess pingdirectory pingdataconsole pingdirectory pingdatagovernance pingdatasync
-8. And voila! You may now access the following administrative consoles:
+7. And voila! You may now access the following administrative consoles:
 - https://pingfederate:9999/pingfederate/app administrator/2FederateM0re!
    You'll notice PingID SDK Adapters are bundled in
 - https://pingaccess:9000/login#/applications/applications administrator/2AccessM0re!
