@@ -18,7 +18,7 @@ Pre-Requisites:
 
 Step-By-Step:
 
-1. Download the AnyCompany Baseline server profile: git clone git clone https://github.com/pingidentity/pingidentity-solution-stacks.git
+1. Download the AnyCompany Baseline server profile: git clone https://github.com/pingidentity/pingidentity-solution-stacks.git
 2. cd pingidentity-solution-stacks/
 3. cd Solution-BaselineCustomer/
 4. (OPTIONAL) - If you are making changes to my YAML file - Backup the existing docker-compose.yaml
