@@ -1,55 +1,50 @@
 # Get started
 
-The solution stacks for Workforce and CIAM are examples of how customers can quickly deploy DevOps images of Ping Identity solutions for demonstration, testing and proof-of-concept. These images are preconfigured to provide a working, interoperating Docker stack of solutions.
+The Workforce and Customer solution profiles are examples of how you can quickly deploy DevOps images of Ping Identity solutions for demonstration, testing and proof-of-concept purposes. These images are preconfigured to provide a working stack of interoperating Docker containers for both the Workforce and Customer use cases.
 
-## The Workforce solution stack
+## The Workforce solution profile
 
-The Workforce solution stack is an example of an authentication authority solution, using PingOne for Enterprise, PingID, PingFederate, and PingDirectory. The PingFederate and PingDirectory images are preconfigured. Two dummy applications are preconfigured in PingFederate for testing SSO. You'll need to manually configure the PingOne for Enterprise connection to PingFederate.
+The Workforce solution profile is an authentication authority solution, using PingOne for Enterprise, PingID, PingFederate, and PingDirectory. The PingFederate and PingDirectory images are preconfigured. Two dummy (stubbed) applications are preconfigured in PingFederate for testing SSO. You'll need to manually configure the PingOne for Enterprise connection to PingFederate.
 
-The Workforce solution looks like this:
+The Workforce solution stack looks like this:
 
-  [image](??)
+![Workforce solution diagram](workforceStack.png)
 
-## The CIAM solution stack
+## The Customer solution profile
 
+The Customer solution stack looks like this:
+
+![Customer solution diagram](customerStack.png)
+
+## Prerequisites
+
+  * A Ping Identity account and a DevOps user name and DevOps key.
+  * For the Workforce solution stack: Either [Docker CE for Windows](https://docs.docker.com/v17.12/install/) or [Docker for macOS](https://docs.docker.com/v17.12/docker-for-mac/install/).
+  * For the Customer solution stack: Deploy to an XL Scalr instance [?? need minimal reqs here]
+  * [Git](https://git-scm.com/downloads).
 
 ## What you'll do:
 
 You'll need an evaluation license to use the DevOps resources. You'll clone our `pingidentity-solution-stacks` repository, set up your DevOps environment, and deploy either the Workforce or CIAM solution using Docker Compose. When you first start the Workforce or CIAM Docker stacks, the necessary set of DevOps images is automatically pulled from the repository.
 
-  1. Check the prerequisites.
-  2. Make a local copy of the DevOps directory, `${HOME}/projects/devops`.
-  3. Clone the solution stacks repository, `https://github.com/pingidentity/pingidentity-solution-stacks.git` to your local `${HOME}/projects/devops` directory.
-  4. Run our `setup` script in `${HOME}/projects/devops/pingidentity-solution-stacks` to quickly set up the DevOps environment.
-  5. Open the `docs/workforce.md` or `docs/ciam.md` documentation for instructions on deploying the solution stack.
+  1. Create the `${HOME}/projects/devops` directory, if it doesn't already exist.
+  2. Clone the solution stacks repository, `https://github.com/pingidentity/pingidentity-solution-stacks.git` to your local `${HOME}/projects/devops` directory.
+  3. Run our `setup` script in `${HOME}/projects/devops/pingidentity-solution-stacks` to quickly set up the DevOps environment.
+  4. Go to the [Workforce solution profile instructions](workforce.md) or [Customer solution profile instructions](customer.md) to deploy the stack for either of these profiles.
 
   See **Initial setup procedures** for complete instructions.
 
-## Prerequisites
-
-  * A Ping Identity account and a DevOps user name and DevOps key.
-  * Either [Docker CE for Windows](https://docs.docker.com/v17.12/install/) or [Docker for macOS](https://docs.docker.com/v17.12/docker-for-mac/install/).
-  * [Git](https://git-scm.com/downloads).
-
 ## Initial setup procedures
 
-  1. If you've not done so already, save your DevOps user name and key in a text file. It'll look something like this:
+  1. Create this directory, if it doesn't already exist: `${HOME}/projects/devops`.
+
+     For example, enter:
 
      ```text
-     PING_IDENTITY_DEVOPS_USER=jsmith@example.com
-     PING_IDENTITY_DEVOPS_KEY=e9bd26ac-17e9-4133-a981-d7a7509314b2
+     mkdir -p ${HOME}/projects/devops
+     cd ${HOME}/projects/devops
      ```
-
-     > Be sure to use the exact variable names.
-
-  2. Make a local copy of the DevOps repository in this location: `${HOME}/projects/devops`.
-  For example, enter:
-
-      ```text
-      mkdir -p ${HOME}/projects/devops
-      cd ${HOME}/projects/devops
-      ```
-    > A common location will make it easier for us to help you if issues occur.
+     > A common location will make it easier for us to help you if issues occur.
 
   3. Clone the DevOps repository to the `${HOME}/projects/devops` directory on your local machine:
 
@@ -61,5 +56,8 @@ You'll need an evaluation license to use the DevOps resources. You'll clone our 
      cd pingidentity-solution-stacks
      ./setup
      ```
+     You're prompted to verify your DevOps user name and key.
 
-  5.
+     You can safely ignore the warnings that display when the setup script finishes.
+
+  5. Go to either the [Workforce solution profile instructions](workforce.md) or [Customer solution profile instructions](customer.md) to deploy the stack for the profile.

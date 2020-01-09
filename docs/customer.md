@@ -1,6 +1,10 @@
-# Customer solution
+# Customer solution profile
 
-![Customer Solution diagram](../Solution-BaselineCustomer/baseline-ciam.png)
+This is a solution profile for a customer authentication authority use case, and is set up as follows:
+
+  *
+
+> If you currently have one of our other Docker stacks running (such as, the Workforce solution stack), you'll need to bring down the stack before proceeding.
 
 ## Prerequisites
 
@@ -8,50 +12,109 @@
 
 ## What you'll do
 
-  1. 
+  1. Deploy the Customer solution stack.
+  2. Log in to the administrative consoles.
 
-## Deploy the Customer Solution stack
+## Deploy the Customer solution stack
 
-1. Download the AnyCompany Baseline server profile: git clone https://github.com/pingidentity/pingidentity-solution-stacks.git
-2. cd pingidentity-solution-stacks/
-3. cd Solution-BaselineCustomer/
-4. (OPTIONAL) - If you are making changes to my YAML file - Backup the existing docker-compose.yaml
--    cp docker-compose.yaml docker-compose.yaml.bak
-5. Run docker-compose docker-compose up -d
-6. On your personal machine, change your hosts file to point to the IP address of your Docker engine host and add the following entries. (And yes, I may change this for the future but just keeping it simple for now)
-X.X.X.X pingfederate pingaccess pingdirectory pingdataconsole pingdirectory pingdatagovernance pingdatasync
-7. And voila! You may now access the following administrative consoles:
-- https://pingfederate:9999/pingfederate/app administrator/2FederateM0re!
-   You'll notice PingID SDK Adapters are bundled in
-- https://pingaccess:9000/login#/applications/applications administrator/2AccessM0re!
-- http://pingdataconsole:8080/console/login
-   * PingDirectory Server: pingdirectory:636
-       - Username: cn=dmanager
-       - Password: 2DirectoryM0re!
-   * PingDataGovernance Server: pingdatagovernance:636
-       - Username: cn=dmanager
-       - Password: 2DirectoryM0re!
-   * PingDataSync Server: pingdatasync:636 (NOTE: PingDataSync has an external Server connection to PingDirectory but there are NO Sync Pipes pre-configured)
-       - Username: cn=dmanager
-       - Password: 2DataSyncM0re!
-   * To connect PingDirectory to Apache Directory Studio, when you run docker container ls, look for the pingdirectory entry and its PORTS — NOTE the WEB and the LDAPS port
-       - For example, if you see:
-          389/tcp, 689/tcp, 5005/tcp, 0.0.0.0:1447->443/tcp, 0.0.0.0:1640->636/tcp
-       - You may connect to your local PD instance over port 1640, over LDAPS, using cn=dmanager/2DirectoryM0re!
-       - Click on Always Trust Certificate for this Session
+  1. Create a new directory in `${HOME}/projects/devops` called "customer".
+  2. Copy the `docker-compose.yaml` and `env_vars` files in `${HOME}/projects/devops/pingidentity-solution-stacks/Solution-BaselineCustomer` to the `${HOME}/projects/devops/customer` directory you created. For example:
 
+  ```text
+  cd ${HOME}/projects/devops/pingidentity-solution-stacks/Solution-WorkForce
+  cp docker-compose.yaml env_vars ${HOME}/projects/devops/workforce
+  ```
 
-For user runtime ports, you can log into the console and grab the URLs, if you followed my instructions above, you can use the following URLs:
-- SAML: https://pingfederate:9031/idp/startSSO.ping?PartnerSpId=https%3A%2F%2Fhttp-bin.org%2Fanything
-   * user.0 / password
-   * Or you can go up to user.10 / password
-- OIDC: https://pingfederate:9031/sp/startSSO.ping?PartnerIdpId=https%3A%2F%2Fpingfederate%3A9031
-   * user.0 / password
-   * Or you can go up to user.10 / password
-- OAuthPlayground: https://pingfederate:9031/OAuthPlayground
-   * AuthzCode, Implicit: user.0 / password up to user.10
-   * ROPC: joe / 2Federate
-   * Client Creds: client_credentials / 2Federate
+  3. If you've been running one of our other Docker stacks, from the `${HOME}/projects/devops/customer` directory, enter:
+
+    ```text
+    docker-compose pull
+    ```
+
+   This will ensure that you have the right container versions for the Customer solution profile.
+
+  4. From the `${HOME}/projects/devops/workforce` directory, run Docker Compose to deploy the solution stack:
+
+    ```text
+    docker-compose up -d
+    ```
+
+    > Docker Compose uses the `docker-compose.yaml` file in the directory from which it's run.
+
+    Enter `docker ps` at intervals to display the status of the containers.
+
+  5. When the PingFederate, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole containers all show a status of "Up" and "(healthy)", continue to the next step to log in to the consoles.
+
+  6. You can now log in to the administrative consoles:
+
+   - PingDirectory
+      Server: https://localhost:636
+      User: cn=dmanager
+      Password: 2AccessM0re!
+
+   - PingDataConsole for PingDirectory
+      Console URL: https://localhost:8443/console
+      Server: pingdirectory
+      User: administrator
+      Password: 2DirectoryM0re!
+
+   - PingFederate
+      Console URL: https://localhost:9999/pingfederate/app
+      User: administrator
+      Password: 2FederateM0re!
+
+   - PingAccess
+      Console URL: https://localhost:9000
+      User: administrator
+      Password: 2AccessM0re!
+
+  - PingDataGovernance
+      Server: https://localhost:636
+      User: cn=dmanager
+      Password: 2AccessM0re!
+
+   - PingDataConsole for PingDataGovernance
+      Console URL: https://localhost:8443/console
+      Server: pingdatagovernance
+      User: administrator
+      Password: 2DirectoryM0re!
+
+  - PingDataSync
+      Server: https://localhost:636
+      User: cn=dmanager
+      Password: 2AccessM0re!
+    > PingDataSync has an external server connection to PingDirectory, but there are *no* Sync Pipes preconfigured.
+
+  - Apache Directory Studio for PingDirectory
+      LDAP Port: 1640
+      LDAP BaseDN: dc=example,dc=com
+      Root Username: cn=dmanager
+      Root Password: 2DirectoryM0re!
+
+  7. To access the user runtime ports, use these URLs. You can also find them using the related administrative console:
+
+     * SAML
+        URL: https://pingfederate:9031/idp/startSSO.ping?PartnerSpId=https%3A%2F%2Fhttp-bin.org%2Fanything
+        User: user.0 (up to user.10)
+        Password: password
+
+     * OIDC
+        URL: https://pingfederate:9031/sp/startSSO.ping?PartnerIdpId=https%3A%2F%2Fpingfederate%3A9031
+        User: user.0 (up to user.10)
+        Password: password
+
+     * OAuthPlayground
+        URL: https://pingfederate:9031/OAuthPlayground
+        AuthzCode, Implicit
+          User: user.0 (up to user.10)
+          Password: password
+        ROPC
+          User: joe
+          Password: 2Federate
+        Client Creds
+         User: client_credentials
+         Password: 2Federate
+
 - PingAccess App: https://pingaccess/anything
    * user.0 / password
    * Or you can go up to user.10 / password
