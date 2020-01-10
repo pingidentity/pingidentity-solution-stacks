@@ -20,11 +20,11 @@ The Workforce stack looks like this:
 ## Prerequisites
 
   * You've completed the inital DevOps setup in [Get started](getStarted.md).
-  * You have registered and activated a PingOne for Enterprise account. You can register for a [30 day free trial account here](https://www.pingidentity.com/en/trials/p14e-trial.html).
+  * You've registered and activated a PingOne for Enterprise account. You can register for a [30 day free trial account here](https://www.pingidentity.com/en/trials/p14e-trial.html).
 
 ## What you'll do
 
-  1. Deploy the Workforce solution stack.
+  1. Deploy the Workforce stack.
   2. Set up PingFederate as the PingOne for Enterprise identity repository, and configure PingDirectory as the PingFederate directory server.
   3. When configuring PingFederate to use PingOne for Enterprise for SSO, you've the option to configure SSO using Kerberos.
   3. Save the PingFederate and PingOne for Enterprise configurations.

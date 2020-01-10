@@ -18,7 +18,7 @@ The Customer stack looks like this:
 
 ## What you'll do
 
-  1. Deploy the Customer solution stack.
+  1. Deploy the Customer stack.
   2. Log in to the administrative consoles.
   3. Log in to the products as a user.
   4. Test the deployment.
