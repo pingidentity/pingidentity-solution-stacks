@@ -1,6 +1,6 @@
 # Workforce solution profile
 
-This is a solution profile for a workforce authentication authority, and is set up as follows:
+This is a solution profile for a workforce authentication authority use case, and is set up as follows:
 
   * The stack includes PingFederate, PingDirectory, and PingDataConsole (as the admin console for PingDirectory).
   * A network-accessible Microsoft Active Directory installation is preconfigured in PingFederate as the user store.
