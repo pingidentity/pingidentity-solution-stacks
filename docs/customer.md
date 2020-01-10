@@ -2,6 +2,7 @@
 
 This is a solution profile for a customer authentication authority use case, and is set up as follows:
 
+  * The stack includes PingFederate, PingID SDK, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole (as the admin console for PingDirectory and PingDataGovernance).
   *
 
 > If you currently have one of our other Docker stacks running (such as, the Workforce solution stack), you'll need to bring down the stack before proceeding.
@@ -33,7 +34,7 @@ The Customer stack looks like this:
   cp docker-compose.yaml env_vars ${HOME}/projects/devops/workforce
   ```
 
-  3. If you've been running one of our other Docker stacks, from the `${HOME}/projects/devops/customer` directory, enter:
+  3. If you've pulled or downloaded our images from the Ping Identity site on Docker hub, or have been running one of our other Docker stacks, from the `${HOME}/projects/devops/customer` directory, enter:
 
     ```text
     docker-compose pull
@@ -123,12 +124,22 @@ The Customer stack looks like this:
          User: client_credentials
          Password: 2Federate
 
-- PingAccess App: https://pingaccess/anything
-   * user.0 / password
-   * Or you can go up to user.10 / password
-- PingDataGovernance API: https://pingdatagovernance:2443/anything
-   * Obtain a Token from PF via OAuthPlayground or make Postman calls if you wish
-- For PingDirectory Consent API --> You may use either Basic or Bearer authentication. If you are using Bearer Authentication, use urn:pingdirectory:consent for Unprivileged consent calls and urn:pingdirectory:consent_admin for Privileged consent calls. A sample email_newsletter Consent Definition has been built for you
-* To see consents for example: GET https://pingdirectory:<CHECK_DOCKER_PORT>/consent/v1/consents?definition=email_newsletter&subject=<user.0 through user.10> (See step 6D of this guide)
-* To post consents for example: POST https://pingdirectory:<CHECK_DOCKER_PORT>/consent/v1/consents
-* Check the PingDirectory Consent API documentation for full API call collection: https://apidocs.pingidentity.com/pingdirectory/consent/v1/api/guide/index.html
+     * PingAccess App
+        URL: https://pingaccess/anything
+        User: user.0 (up to user.10)
+        Password: password
+
+  8. To access the APIs:
+
+     * PingDataGovernance API
+        URL: https://pingdatagovernance:2443/anything
+        Obtain a token from PingFederate using OAuthPlayground or make Postman calls.
+
+     * PingDirectory Consent API
+        You can use either Basic or Bearer authentication. If you are using Bearer Authentication, use `urn:pingdirectory:consent` for unprivileged Consent calls and `urn:pingdirectory:consent_admin` for privileged Consent calls. A sample email_newsletter Consent Definition has been built for you.
+
+        To see the consents, use: GET https://pingdirectory:1640/consent/v1/consents?definition=email_newsletter&subject=user.0
+
+        To post consents, use: POST https://pingdirectory:1640/consent/v1/consents
+
+        See the [PingDirectory Consent API documentation](https://apidocs.pingidentity.com/pingdirectory/consent/v1/api/guide/index.html) for more information.
