@@ -6,14 +6,22 @@ This is a solution profile for a customer authentication authority use case, and
 
 > If you currently have one of our other Docker stacks running (such as, the Workforce solution stack), you'll need to bring down the stack before proceeding.
 
+## Architecture
+
+The Customer stack looks like this:
+
+![Customer solution diagram](customerStack.png)
+
 ## Prerequisites
 
-  * You've completed the [inital DevOps setup](getStarted.md).
+  * You've completed the inital DevOps setup in [Get started](getStarted.md).
 
 ## What you'll do
 
   1. Deploy the Customer solution stack.
   2. Log in to the administrative consoles.
+  3. Log in to the products as a user.
+  4. Test the deployment.
 
 ## Deploy the Customer solution stack
 
@@ -68,7 +76,7 @@ This is a solution profile for a customer authentication authority use case, and
       User: administrator
       Password: 2AccessM0re!
 
-  - PingDataGovernance
+   - PingDataGovernance
       Server: https://localhost:636
       User: cn=dmanager
       Password: 2AccessM0re!
@@ -79,13 +87,13 @@ This is a solution profile for a customer authentication authority use case, and
       User: administrator
       Password: 2DirectoryM0re!
 
-  - PingDataSync
+   - PingDataSync
       Server: https://localhost:636
       User: cn=dmanager
       Password: 2AccessM0re!
     > PingDataSync has an external server connection to PingDirectory, but there are *no* Sync Pipes preconfigured.
 
-  - Apache Directory Studio for PingDirectory
+   - Apache Directory Studio for PingDirectory
       LDAP Port: 1640
       LDAP BaseDN: dc=example,dc=com
       Root Username: cn=dmanager

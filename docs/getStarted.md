@@ -1,20 +1,6 @@
 # Get started
 
-The Workforce and Customer solution profiles are examples of how you can quickly deploy DevOps images of Ping Identity solutions for demonstration, testing and proof-of-concept purposes. These images are preconfigured to provide a working stack of interoperating Docker containers for both the Workforce and Customer use cases.
-
-## The Workforce solution profile
-
-The Workforce solution profile is an authentication authority solution, using PingOne for Enterprise, PingID, PingFederate, and PingDirectory. The PingFederate and PingDirectory images are preconfigured. Two dummy (stubbed) applications are preconfigured in PingFederate for testing SSO. You'll need to manually configure the PingOne for Enterprise connection to PingFederate.
-
-The Workforce solution stack looks like this:
-
-![Workforce solution diagram](workforceStack.png)
-
-## The Customer solution profile
-
-The Customer solution stack looks like this:
-
-![Customer solution diagram](customerStack.png)
+Before deploying any of our solution profiles, you need to set up our DevOps environment. This will ensure your successful deployments and give you access to our DevOps resources.
 
 ## Prerequisites
 
@@ -25,7 +11,7 @@ The Customer solution stack looks like this:
 
 ## What you'll do:
 
-You'll need an evaluation license to use the DevOps resources. You'll clone our `pingidentity-solution-stacks` repository, set up your DevOps environment, and deploy either the Workforce or CIAM solution using Docker Compose. When you first start the Workforce or CIAM Docker stacks, the necessary set of DevOps images is automatically pulled from the repository.
+You'll need an evaluation license to use the DevOps resources. You'll clone our `pingidentity-solution-stacks` repository, set up your DevOps environment, and deploy a solution profile stack using Docker Compose. When you first start one of our stacks, the necessary set of product images is automatically pulled from the repository.
 
   1. Create the `${HOME}/projects/devops` directory, if it doesn't already exist.
   2. Clone the solution stacks repository, `https://github.com/pingidentity/pingidentity-solution-stacks.git` to your local `${HOME}/projects/devops` directory.

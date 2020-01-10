@@ -11,9 +11,15 @@ This is a solution profile for a workforce authentication authority use case, an
 
 > If you currently have one of our other Docker stacks running (such as, the Customer solution stack), you'll need to bring down the stack before proceeding.
 
+## Architecture
+
+The Workforce stack looks like this:
+
+![Workforce solution diagram](workforceStack.png)
+
 ## Prerequisites
 
-  * You've completed the [inital DevOps setup](getStarted.md).
+  * You've completed the inital DevOps setup in [Get started](getStarted.md).
   * You have registered and activated a PingOne for Enterprise account. You can register for a [30 day free trial account here](https://www.pingidentity.com/en/trials/p14e-trial.html).
 
 ## What you'll do
