@@ -49,7 +49,7 @@ dsconfig create-external-server \
 
 # Add httpbin API endpoint
 
-dsconfig create-api-endpoint \
+dsconfig create-gateway-api-endpoint \
     --endpoint-name httpbin  \
     --set inbound-base-path:/anything  \
     --set outbound-base-path:/anything  \
@@ -74,7 +74,7 @@ dsconfig set-policy-decision-service-prop \
 
 # Set PF ATV for http-bin endpoint
 
-dsconfig set-api-endpoint-prop \
+dsconfig set-gateway-api-endpoint-prop \
     --endpoint-name httpbin  \
     --set access-token-validator:pingfederateATV 
 

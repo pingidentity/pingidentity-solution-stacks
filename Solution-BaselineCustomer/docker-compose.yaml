@@ -2,13 +2,14 @@ version: "3.1"
 
 services:
   pingaccess:
-    image: pingidentity/pingaccess:5.3.0
+    image: pingidentity/pingaccess
     command: wait-for pingfederate:9031 -t 420 -- entrypoint.sh start-server
     env_file:
       - ~/.pingidentity/devops
     environment: 
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
       - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingaccess
+      - PING_IDENTITY_ACCEPT_EULA=YES
     ports:
       - 443:443
       - 9000:9000
@@ -20,9 +21,11 @@ services:
     command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
     env_file:
       - ~/.pingidentity/devops
+      - ./env_vars
     environment: 
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
       - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingfederate
+      - PING_IDENTITY_ACCEPT_EULA=YES
     ports:
       - 9031:9031
       - 9999:9999
@@ -36,11 +39,13 @@ services:
     image: pingidentity/pingdirectory
     env_file:
       - ~/.pingidentity/devops
+      - ./env_vars
     environment: 
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
       - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingdirectory
       - USER_BASE_DN=dc=anycompany,dc=co
       - VERBOSE=true
+      - PING_IDENTITY_ACCEPT_EULA=YES
     ports:
       - 1636-1646:636
       - 1443-1453:443
@@ -48,13 +53,14 @@ services:
       - pingnet-internal
 
   pingdatagovernance:
-    image: pingidentity/pingdatagovernance:7.3.0.0
+    image: pingidentity/pingdatagovernance
     env_file:
       - ~/.pingidentity/devops
     command: wait-for pingfederate:9031 -t 300 -- entrypoint.sh start-server
     environment: 
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
       - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingdatagovernance
+      - PING_IDENTITY_ACCEPT_EULA=YES
     env_file:
       - ~/.pingidentity/devops
     ports:
@@ -67,6 +73,7 @@ services:
     environment: 
       - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
       - SERVER_PROFILE_PATH=Solution-BaselineCustomer/pingdatasync
+      - PING_IDENTITY_ACCEPT_EULA=YES
     env_file:
       - ~/.pingidentity/devops
     ports:
