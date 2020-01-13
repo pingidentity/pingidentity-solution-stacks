@@ -9,7 +9,7 @@ This is a solution profile for a workforce authentication authority use case, an
   * PingID is preconfigured in PingFederate to provide multi-factor authentication.
   * Two dummy (stubbed) applications are preconfigured in PingFederate for testing SSO.
 
-> If you currently have one of our other Docker stacks running (such as, the Customer solution stack), you'll need to bring down the stack before proceeding.
+> If you currently have one of our other Docker stacks running (such as, the Customer stack), you'll need to bring down the stack before proceeding.
 
 ## Architecture
 
@@ -27,11 +27,13 @@ The Workforce stack looks like this:
   1. Deploy the Workforce stack.
   2. Set up PingFederate as the PingOne for Enterprise identity repository, and configure PingDirectory as the PingFederate directory server.
   3. When configuring PingFederate to use PingOne for Enterprise for SSO, you've the option to configure SSO using Kerberos.
-  3. Save the PingFederate and PingOne for Enterprise configurations.
-  4. To use PingID for multi-factor authentication, copy your PingID client secret into PingFederate's PingID adapter [?? exact instructions?]
-  4. Test the deployment.
+  4. Save the PingFederate and PingOne for Enterprise configurations.
+  5. To use PingID for multi-factor authentication, copy your PingID client secret into PingFederate's PingID adapter [?? exact instructions?]
+  6. Test the deployment.
 
-## Deploy the Workforce solution stack
+  See **Deploy the Workforce stack** and **Set up PingFederate** for more information.
+
+## Deploy the Workforce stack
 
   1. Create a new directory in `${HOME}/projects/devops` called "workforce".
   2. Copy the docker-compose.yaml and env_vars files in `${HOME}/projects/devops/pingidentity-solution-stacks/Solution-WorkForce` to the `${HOME}/projects/devops/workforce` directory. For example:
@@ -41,7 +43,7 @@ The Workforce stack looks like this:
   cp docker-compose.yaml env_vars ${HOME}/projects/devops/workforce
   ```
 
-  3. If you've been running one of our other Docker stacks, from the `${HOME}/projects/devops/workforce` directory, enter:
+  3. If you've pulled or downloaded our images from the Ping Identity site on Docker hub, or have been running one of our other Docker stacks, from the `${HOME}/projects/devops/workforce` directory, enter:
 
      ```text
      docker-compose pull
@@ -108,3 +110,26 @@ You'll use PingFederate and PingOne for Enterprise to set up PingFederate as the
   15. Accept the default attribute mapping and click `Save`.
 
 ## Test the deployment
+
+There are two dummy (stubbed) OIDC applications you can use to test SSO. The OAuth configuration for the applications is:
+
+  * `authorization code`, `implicit`, and `refesh token` grants.
+  * `Issuer`: localhost
+  * `client_id`: PingLogon
+  * `client_secret`: 2FederateM0re
+  * Client Credentials:
+    - `client_id`: cc_secret_client
+    - `client_secret`: 2FederateM0re
+  * Introspection:
+  - `client_id`: PingIntrospect
+  - `client_secret`: 2FederateM0re
+
+  1. Go to `https://localhost/idp/startSSO.ping?PartnerSpId=Dummy-SAML` to access the applications.
+  2. Use either of these sets of user credentials:
+
+    * User1
+      - User: pinguser1
+      - Password: 2FederateM0re
+    * User2
+      - User: pinguser2
+      - Password: 2FederateM0re

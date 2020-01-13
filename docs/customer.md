@@ -5,7 +5,7 @@ This is a solution profile for a customer authentication authority use case, and
   * The stack includes PingFederate, PingID SDK, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole (as the admin console for PingDirectory and PingDataGovernance).
   *
 
-> If you currently have one of our other Docker stacks running (such as, the Workforce solution stack), you'll need to bring down the stack before proceeding.
+> If you currently have one of our other Docker stacks running (such as, the Workforce stack), you'll need to bring down the stack before proceeding.
 
 ## Architecture
 
@@ -19,12 +19,17 @@ The Customer stack looks like this:
 
 ## What you'll do
 
-  1. Deploy the Customer stack.
-  2. Log in to the administrative consoles.
-  3. Log in to the products as a user.
-  4. Test the deployment.
+  1. Create a `${HOME}/projects/devops/customer` directory and copy there the `docker-compose.yaml` and `env_vars` files in `${HOME}/projects/devops/pingidentity-solution-stacks/Solution-BaselineCustomer`.
+  2. Deploy the Customer stack.
+  3. Log in to the administrative consoles.
+  4. Log in to the products as a user.
+  5. Test the deployment using the user runtime ports.
+  6. (Optional) Test the deployment using the PingDataGovernance or PingDirectory Consent APIs.
 
-## Deploy the Customer solution stack
+  See **Deploy the Customer stack** for more information.
+
+
+## Deploy the Customer stack
 
   1. Create a new directory in `${HOME}/projects/devops` called "customer".
   2. Copy the `docker-compose.yaml` and `env_vars` files in `${HOME}/projects/devops/pingidentity-solution-stacks/Solution-BaselineCustomer` to the `${HOME}/projects/devops/customer` directory you created. For example:
