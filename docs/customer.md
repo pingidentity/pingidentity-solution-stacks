@@ -105,46 +105,58 @@ The Customer stack looks like this:
       Root Username: cn=dmanager
       Root Password: 2DirectoryM0re!
 
-  7. To access the user runtime ports, use these URLs. You can also find them using the related administrative console:
+## Test the depoyment
 
-     * SAML
-        URL: https://pingfederate:9031/idp/startSSO.ping?PartnerSpId=https%3A%2F%2Fhttp-bin.org%2Fanything
+To access the user runtime ports, use these URLs. You can also find them using the related administrative console:
+
+   * SAML
+      URL: https://pingfederate:9031/idp/startSSO.ping?PartnerSpId=https%3A%2F%2Fhttp-bin.org%2Fanything
+      User: user.0 (up to user.10)
+      Password: password
+
+   * OIDC
+      URL: https://pingfederate:9031/sp/startSSO.ping?PartnerIdpId=https%3A%2F%2Fpingfederate%3A9031
+      User: user.0 (up to user.10)
+      Password: password
+
+   * OAuthPlayground
+      URL: https://pingfederate:9031/OAuthPlayground
+      AuthzCode, Implicit
         User: user.0 (up to user.10)
         Password: password
+      ROPC
+        User: joe
+        Password: 2Federate
+      Client Creds
+       User: client_credentials
+       Password: 2Federate
 
-     * OIDC
-        URL: https://pingfederate:9031/sp/startSSO.ping?PartnerIdpId=https%3A%2F%2Fpingfederate%3A9031
-        User: user.0 (up to user.10)
-        Password: password
+   * PingAccess App
+      URL: https://pingaccess/anything
+      User: user.0 (up to user.10)
+      Password: password
 
-     * OAuthPlayground
-        URL: https://pingfederate:9031/OAuthPlayground
-        AuthzCode, Implicit
-          User: user.0 (up to user.10)
-          Password: password
-        ROPC
-          User: joe
-          Password: 2Federate
-        Client Creds
-         User: client_credentials
-         Password: 2Federate
+To access the APIs:
 
-     * PingAccess App
-        URL: https://pingaccess/anything
-        User: user.0 (up to user.10)
-        Password: password
+   * PingDataGovernance API
+      URL: https://pingdatagovernance:2443/anything
+      Obtain a token from PingFederate using OAuthPlayground or make Postman calls.
 
-  8. To access the APIs:
+   * PingDirectory Consent API
+      You can use either Basic or Bearer authentication. If you are using Bearer Authentication, use `urn:pingdirectory:consent` for unprivileged Consent calls and `urn:pingdirectory:consent_admin` for privileged Consent calls. A sample email_newsletter Consent Definition has been built for you.
 
-     * PingDataGovernance API
-        URL: https://pingdatagovernance:2443/anything
-        Obtain a token from PingFederate using OAuthPlayground or make Postman calls.
+      To see the consents, use: GET https://pingdirectory:1640/consent/v1/consents?definition=email_newsletter&subject=user.0
 
-     * PingDirectory Consent API
-        You can use either Basic or Bearer authentication. If you are using Bearer Authentication, use `urn:pingdirectory:consent` for unprivileged Consent calls and `urn:pingdirectory:consent_admin` for privileged Consent calls. A sample email_newsletter Consent Definition has been built for you.
+      To post consents, use: POST https://pingdirectory:1640/consent/v1/consents
 
-        To see the consents, use: GET https://pingdirectory:1640/consent/v1/consents?definition=email_newsletter&subject=user.0
+      See the [PingDirectory Consent API documentation](https://apidocs.pingidentity.com/pingdirectory/consent/v1/api/guide/index.html) for more information.
 
-        To post consents, use: POST https://pingdirectory:1640/consent/v1/consents
+When you no longer want to run this stack, you can either bring the stack down (recommended), or stop the running stack. Entering:
 
-        See the [PingDirectory Consent API documentation](https://apidocs.pingidentity.com/pingdirectory/consent/v1/api/guide/index.html) for more information.
+  `docker-compose down`
+
+will remove all of the containers and associated Docker networks. Entering:
+
+  `docker-compose stop`
+
+will stop the running stack without removing any of the containers or associated Docker networks.

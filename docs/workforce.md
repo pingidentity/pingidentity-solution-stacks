@@ -88,29 +88,51 @@ You'll use PingFederate and PingOne for Enterprise to set up PingFederate as the
      > If you bring down the Workforce stack without having set up a local Docker volume to store configuration changes as recommended in [Get started](getStarted.md), your prior configuration of PingFederate will not be saved and you'll need to repeat your PingFederate set up. In this case, however, PingOne for Enterprise will retain its PingFederate configuration, so you'll be able to use the existing activation key in PingOne for Enterprise. In PingOne for Enterprise just select to edit the configuration and again copy the activation key displayed.
 
   7. In PingFederate, copy into the `Activation Key` field the single-use activation key, and click `Next`.
-  8. You're asked whether to connect to a Directory server. Select `Yes, Connect a Directory Server`.
-  9. The LDAP configuration form for the directory server is displayed. Use the following entries:
-
-    ```text
-    Directory Type: PingDirectory
-    Data Store Name: pingdirectory
-    Hostname: pingdirectory
-    Service Account DN: cn=administrator
-    Password: 2FederateM0re
-    Search Base: dc=workforce.com
-    ```
-
-    > The Search Filter field is automatically filled in.
-
-  10. Click `Next` to continue with an unsecure connection.
-  11. Select to SSO with PingOne.
-  12. Confirm `https://localhost:9031` as the base URL for PingFederate.
+  8. You're asked whether to connect to a Directory server. Select `No, Do Not Connect a Directory Server`.
+  9. Click `Next` to continue with an unsecure connection.
+  10. Select to SSO with PingOne.
+  11. Confirm `https://localhost:9031` as the base URL for PingFederate.
 
      The configuration settings you've applied are displayed.
 
-  13. Click `Next` to apply the settings.
-  14. Go to your PingOne for Enterprise session. When `Configured` is displayed, click `Next`.
-  15. Accept the default attribute mapping and click `Save`.
+  12. Click `Next` to apply the settings.
+  13. Go to your PingOne for Enterprise session. When `Configured` is displayed, click `Next`.
+  14. Accept the default attribute mapping and click `Save`.
+
+## Set up a Windows Kerberos client
+
+The Workforce stack is preconfigured to use a network-accessible installation of Active Directory as the user store.
+
+  > If you'd like to reconfigure this to use your own Active Directory forest, you'll need to change the `Datastore` and `Password Credential Validator` settings in PingFederate to reflect your installation.
+
+To use Kerberos with Windows clients:
+
+  1. Assign your Windows client DNS to the IP address of the Active Directory Domain Controller. [?? what is this for the preconfigured AD?]
+  2. Join the Windows client to the domain.
+  3. Log on to the Windows client as a domain user. For the preconfigured Active Directory domain, this can be either:
+
+     * User1
+      - User: pinguser1
+      - Password: 2FederateM0re
+     * User2
+      - User: pinguser2
+      - Password: 2FederateM0re
+
+  4. Add the PingFederate host to the Internet Explorer (IE) Intranet Zone.
+
+     If you want to use Edge, import the IE settings to Edge (Settings --> Import --> IE).
+
+  5. Set the PingFederate `Connection` --> `Extended Properties` to use Kerberos.
+
+     You can use the [supplied Powershell script](../Solution-WorkForce/ActiveDirectory) `100-Configure-IntranetSites-in-IE.ps` to set this.
+
+     > If you encounter a problem with untrusted certificates, either trust the PingFederate certificate in the browser as an exception, or add a proper certificate to `SSL Certificates` in PingFederate.
+
+## (Optional) Create your own Active Directory forest
+
+If you'd rather configure your own Active Directory installation, you can use the supplied Powershell scripts to create a new Active Directory forest, add Active Directory Domain Services, a DNS server, and a set of domain users. The scripts to do this are located in the [ActiveDirectory subdirectory](../Solution-WorkForce/ActiveDirectory/00-Install-and-Configure-Domain-Controller).
+
+...tbd
 
 ## Test the deployment
 
@@ -128,7 +150,7 @@ There are two dummy (stubbed) OIDC applications you can use to test SSO. The OAu
   - `client_secret`: 2FederateM0re
 
   1. Go to `https://localhost/idp/startSSO.ping?PartnerSpId=Dummy-SAML` to access the applications.
-  2. Use either of these sets of user credentials:
+  2. Use either of these sets of Active Directory user credentials:
 
     * User1
       - User: pinguser1
@@ -136,3 +158,13 @@ There are two dummy (stubbed) OIDC applications you can use to test SSO. The OAu
     * User2
       - User: pinguser2
       - Password: 2FederateM0re
+
+When you no longer want to run this stack, you can either bring the stack down (recommended), or stop the running stack. Entering:
+
+  `docker-compose down`
+
+will remove all of the containers and associated Docker networks. Entering:
+
+  `docker-compose stop`
+
+will stop the running stack without removing any of the containers or associated Docker networks.
