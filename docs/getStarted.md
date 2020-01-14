@@ -46,4 +46,24 @@ You'll need an evaluation license to use the DevOps resources. You'll clone our 
 
      You can safely ignore the warnings that display when the setup script finishes.
 
-  5. Go to either the [Workforce solution profile instructions](workforce.md) or [Customer solution profile instructions](customer.md) to deploy the stack for the profile.
+  5. (Recommended) Set up a local Docker volume to persist state and data for the stack whenever you bring the stack down. This will enable you to save any configuration changes you make to the product instances running in the stack. If you don't do this, the next time you bring up the stack, you'll need to repeat any configuration changes you might have made.
+
+     You'll need to bind a Docker volume location to the Docker `/opt/out` directory for the container. Docker uses the `/opt/out` directory to store application data. To do this, for each container in the stack:
+
+      a. Add a `volumes` section to the container entry in the `docker-compose.yaml` file you're using for the stack.
+      b. Under the `volumes` section, add a location to persist your data. For the example:
+
+         ```yaml
+         pingfederate:
+         .
+         .
+         .
+         volumes:
+           - /tmp/compose/pingfederate_1:/opt/out
+         ```
+
+         When the container starts, this will bind mount `/tmp/compose/pingfederate_1` to the `/opt/out` directory in the container. You're also able to view the product logs and data in the `/tmp/compose/pingfederate_1` directory.
+
+     c. Repeat this process for the remaining container entries in the stack.
+
+  6. Go to either the [Workforce solution profile instructions](workforce.md) or [Customer solution profile instructions](customer.md) to deploy the stack for the profile.

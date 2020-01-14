@@ -84,6 +84,9 @@ You'll use PingFederate and PingOne for Enterprise to set up PingFederate as the
   4. Sign on to your PingOne for Enterprise account and go to `Setup` &#8594; `Identity Repository` &#8594; `Connect to an Identity Repository` and select `PingFederate`.
   5. In PingOne for Enterprise, select `Yes` that you currently have a PingFederate installation.
   6. In PingOne for Enterprise, click `Next` and copy the activation key for PingFederate.
+
+     > If you bring down the Workforce stack without having set up a local Docker volume to store configuration changes as recommended in [Get started](getStarted.md), your prior configuration of PingFederate will not be saved and you'll need to repeat your PingFederate set up. In this case, however, PingOne for Enterprise will retain its PingFederate configuration, so you'll be able to use the existing activation key in PingOne for Enterprise. In PingOne for Enterprise just select to edit the configuration and again copy the activation key displayed.
+
   7. In PingFederate, copy into the `Activation Key` field the single-use activation key, and click `Next`.
   8. You're asked whether to connect to a Directory server. Select `Yes, Connect a Directory Server`.
   9. The LDAP configuration form for the directory server is displayed. Use the following entries:
