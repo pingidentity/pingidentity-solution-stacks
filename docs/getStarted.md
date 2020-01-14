@@ -56,11 +56,11 @@ You'll need an evaluation license to use the DevOps resources. You'll clone our 
 
          ```yaml
          pingfederate:
-         .
-         .
-         .
-         volumes:
-           - /tmp/compose/pingfederate_1:/opt/out
+           .
+           .
+           .
+           volumes:
+             - /tmp/compose/pingfederate_1:/opt/out
          ```
 
          When the container starts, this will bind mount `/tmp/compose/pingfederate_1` to the `/opt/out` directory in the container. You're also able to view the product logs and data in the `/tmp/compose/pingfederate_1` directory.
