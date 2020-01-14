@@ -51,6 +51,7 @@ You'll need an evaluation license to use the DevOps resources. You'll clone our 
      You'll need to bind a Docker volume location to the Docker `/opt/out` directory for the container. Docker uses the `/opt/out` directory to store application data. To do this, for each container in the stack:
 
       a. Add a `volumes` section to the container entry in the `docker-compose.yaml` file you're using for the stack.
+
       b. Under the `volumes` section, add a location to persist your data. For the example:
 
          ```yaml
