@@ -41,7 +41,7 @@ The LDAPS certificate used by AD (`solution-wf-ad-cert.crt`) has been exported a
   2. Set up PingFederate as the PingOne for Enterprise identity repository, and configure PingDirectory as the PingFederate directory server.
   3. When configuring PingFederate to use PingOne for Enterprise for SSO, you've the option to configure SSO using Kerberos.
   4. Save the PingFederate and PingOne for Enterprise configurations.
-  5. To use PingID for multi-factor authentication, copy your PingID client secret into PingFederate's PingID adapter [?? exact instructions?]
+  5. To use PingID for multi-factor authentication, Base64 encode your PingID client secret and copy it into the `env_vars` file in the [Solution-WorkForce directory](../Solution-WorkForce).
   6. Test the deployment.
 
   See **Deploy the Workforce stack** and **Set up PingFederate** for more information.
@@ -64,7 +64,13 @@ The LDAPS certificate used by AD (`solution-wf-ad-cert.crt`) has been exported a
 
      This will ensure that you have the right container versions for the Customer solution profile.
 
-  4. From the `${HOME}/projects/devops/workforce` directory, run Docker Compose to deploy the solution stack:
+  4. To use PingID for multi-factor authentication:
+
+     a. Base64 encode your PingID client secret. You'll find the PingID client secret in PingOne for Enterprise (Setup --> PingID --> Client Integration). 
+
+     b. Copy the encoded client secret into the `PID_BASE64` assignment in the `env_vars` file located in the [Solution-WorkForce directory](../Solution-WorkForce).
+
+  5. From the `${HOME}/projects/devops/workforce` directory, run Docker Compose to deploy the solution stack:
 
   ```text
   docker-compose up -d
@@ -74,7 +80,7 @@ The LDAPS certificate used by AD (`solution-wf-ad-cert.crt`) has been exported a
 
     Enter `docker ps` at intervals to display the status of the containers.
 
-  5. When the PingFederate, PingDirectory, and PingDataConsole containers all show a status of "Up" and "(healthy)", continue to the next section to log in to the PingFederate console.
+  6. When the PingFederate, PingDirectory, and PingDataConsole containers all show a status of "Up" and "(healthy)", continue to the next section to log in to the PingFederate console.
 
 ## Set up PingFederate
 
