@@ -29,7 +29,6 @@ The Customer stack looks like this:
 
   See **Deploy the Customer stack** for more information.
 
-
 ## Deploy the Customer stack
 
   1. Create a new directory in `${HOME}/projects/devops` called "customer".

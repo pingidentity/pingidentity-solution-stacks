@@ -6,7 +6,7 @@ Before deploying any of our solution profiles, you need to set up our DevOps env
 
   * A Ping Identity account and a DevOps user name and DevOps key.
   * For the Workforce solution stack: Either [Docker CE for Windows](https://docs.docker.com/v17.12/install/) or [Docker for macOS](https://docs.docker.com/v17.12/docker-for-mac/install/).
-  * For the Customer solution stack: A local machine having [?? min. reqs] or a virtual host (such as a Scalr instance) on which to run the stack.
+  * For the Customer solution stack: A local machine running Docker and having [?? min. reqs] or Docker running on a virtual host (such as a Scalr instance).
   * [Git](https://git-scm.com/downloads).
 
 ## What you'll do:

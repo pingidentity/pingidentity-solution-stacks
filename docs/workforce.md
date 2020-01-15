@@ -3,7 +3,7 @@
 This is a solution profile for a workforce authentication authority use case, and is set up as follows:
 
   * The stack includes PingFederate, PingDirectory, and PingDataConsole (as the admin console for PingDirectory).
-  * A network-accessible Microsoft Active Directory installation is preconfigured in PingFederate as the user store.
+  * A network-accessible Microsoft Active Directory (AD) installation is preconfigured in PingFederate as the user store.
   * PingFederate uses PingDirectory to store administrator account, OAuth clients and grants, and session information.
   * You'll use your (prerequisite) PingOne for Enterprise account for SSO.
   * PingID is preconfigured in PingFederate to provide multi-factor authentication.
@@ -16,6 +16,19 @@ This is a solution profile for a workforce authentication authority use case, an
 The Workforce stack looks like this:
 
 ![Workforce solution diagram](workforceStack.png)
+
+### The preconfigured AD implementation
+
+The preconfigured AD implementation available to you uses these settings:
+
+| Name | Value |
+| --- | --- |
+| Forest name | `workforce.com` |
+| Root DN | `dc=workforce,dc=com` |
+| NetBIOS name | `workforce` |
+| Domain Controller DNS | `int-ad.solution-wf.ping-eng.com`
+
+The LDAPS certificate used by AD (`solution-wf-ad-cert.crt`) has been exported and is located in the [ActiveDirectory directory](../Solution-WorkForce/ActiveDirectory).
 
 ## Prerequisites
 
@@ -101,15 +114,15 @@ You'll use PingFederate and PingOne for Enterprise to set up PingFederate as the
 
 ## Set up a Windows Kerberos client
 
-The Workforce stack is preconfigured to use a network-accessible installation of Active Directory as the user store.
+The Workforce stack is preconfigured to use a network-accessible installation of AD as the user store.
 
-  > If you'd like to reconfigure this to use your own Active Directory forest, you'll need to change the `Datastore` and `Password Credential Validator` settings in PingFederate to reflect your installation.
+  > If you'd like to reconfigure this to use your own AD forest, you'll need to change the `Datastore` and `Password Credential Validator` settings in PingFederate to reflect your installation.
 
 To use Kerberos with Windows clients:
 
-  1. Assign your Windows client DNS to the IP address of the Active Directory Domain Controller. [?? what is this for the preconfigured AD?]
+  1. Assign your Windows client DNS to the IP address of the AD Domain Controller (DC). [?? what is this for the preconfigured AD?]
   2. Join the Windows client to the domain.
-  3. Log on to the Windows client as a domain user. For the preconfigured Active Directory domain, this can be either:
+  3. Log on to the Windows client as a domain user. For the preconfigured AD domain, this can be either:
 
      * User1
       - User: pinguser1
@@ -128,12 +141,6 @@ To use Kerberos with Windows clients:
 
      > If you encounter a problem with untrusted certificates, either trust the PingFederate certificate in the browser as an exception, or add a proper certificate to `SSL Certificates` in PingFederate.
 
-## (Optional) Create your own Active Directory forest
-
-If you'd rather configure your own Active Directory installation, you can use the supplied Powershell scripts to create a new Active Directory forest, add Active Directory Domain Services, a DNS server, and a set of domain users. The scripts to do this are located in the [ActiveDirectory subdirectory](../Solution-WorkForce/ActiveDirectory/00-Install-and-Configure-Domain-Controller).
-
-...tbd
-
 ## Test the deployment
 
 There are two dummy (stubbed) OIDC applications you can use to test SSO. The OAuth configuration for the applications is:
@@ -150,7 +157,7 @@ There are two dummy (stubbed) OIDC applications you can use to test SSO. The OAu
   - `client_secret`: 2FederateM0re
 
   1. Go to `https://localhost/idp/startSSO.ping?PartnerSpId=Dummy-SAML` to access the applications.
-  2. Use either of these sets of Active Directory user credentials:
+  2. Use either of these sets of AD user credentials:
 
     * User1
       - User: pinguser1
@@ -168,3 +175,42 @@ will remove all of the containers and associated Docker networks. Entering:
   `docker-compose stop`
 
 will stop the running stack without removing any of the containers or associated Docker networks.
+
+## (Optional) Use your own AD installation
+
+If you'd rather use your own AD installation, you can use the supplied Powershell scripts in the [ActiveDirectory subdirectory](../Solution-WorkForce/ActiveDirectory/00-Install-and-Configure-Domain-Controller) to configure AD for use with the Workforce stack. These scripts:
+
+  * Add AD Domain Services (`00-Install-ADDomainServices.ps`).
+  * Create and configure a new AD forest (`01-New-ADForest.ps` and `02-Post-ADForest-Config.ps`).
+  * Configure the Organizational Units (OUs) (`10-Create-PingOUs.ps`).
+  * Create a Ping Identity service user and Service Principal Name (`11-Create-PingServiceUser.ps`).
+  * Add a set of domain groups and users (`15-Create-PingUsers.ps` and `16-Create-PingGroups.ps`).
+  * Add a Certificate Authority and configure a certificate enrollment policy (`20-Add-Certificate-Server.ps` and `21-Configure-CertEnrollmentPolicy.ps`).
+
+### Domain users
+
+The Ping Identity service accounts and the user accounts are identified by `cn=pingfederate,ou=ServiceAccounts,...` and `cn=pinguser1,ou=UserAccounts,...`. The password for the user accounts is: `2FederateM0re`.
+
+### Certificate Authority
+
+The Certificate Authority is used by the Domain Controller (DC) to get certificates used by LDAPS, and for future use cases employing Windows devices or user certificates (such as smart cards).
+
+### DNS
+
+If you'll be using AD Domain-Joined machines (to demonstrate Kerberos integration, for example), you need to name the AD forest or domain something other than your PingFederate host domain name. This domain name for the preconfigured AD installation is `ping-demos.com`. This allows the Domain-Joined machines to resolve the PingFederate URL using the DNS forwarding being done by the DNS server. If you don't use a different domain name for Domain-Joined machines, you'll need to add an `A record` to the DNS server that points to your PingFederate host and IP address.
+
+### Service Principal Name
+
+A Service Principal Name (SPN) is added to the `pingfederate` account (using `11-Create-PingServiceUser.ps`) to allow Kerberos authentication from `workforce-pf.ping-demos.com`.
+
+### LDAPS certificate for PingFederate
+
+For PingFederate to be able to connect over LDAPS, you'll need to export the LDAPS certificate. A good way to do this is:
+
+  1. Use Apache Directory Studio to connect to AD over LDAPS.
+  2. Store the certificate for the session.
+  3. Export it from Active Directory Studio (Preferences --> Connections --> Certificate Validation --> Temporary Trusted).
+
+     The certificate should show the CN as the Domain Controller <windows> name.
+
+  4. Export this in `.DER` format, then import it into PingFederate.
