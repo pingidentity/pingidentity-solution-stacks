@@ -3,7 +3,7 @@
 This is a solution profile for a customer authentication authority use case, and is set up as follows:
 
   * The stack includes PingFederate, PingID SDK, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole (as the admin console for PingDirectory and PingDataGovernance).
-  *
+  * ...tbd...
 
 > If you currently have one of our other Docker stacks running (such as, the Workforce stack), you'll need to bring down the stack before proceeding.
 
