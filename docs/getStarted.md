@@ -9,7 +9,7 @@ Before deploying any of our solution profiles, you need to set up our DevOps env
   * For the Customer solution stack: A local machine running Docker and having [?? min. reqs] or Docker running on a virtual host (such as a Scalr instance).
   * [Git](https://git-scm.com/downloads).
 
-## What you'll do:
+## What you'll do
 
 You'll need an evaluation license to use the DevOps resources. You'll clone our `pingidentity-solution-stacks` repository, set up your DevOps environment, and deploy a solution profile stack using Docker Compose. When you first start one of our stacks, the necessary set of product images is automatically pulled from the repository.
 
