@@ -6,7 +6,7 @@ Before deploying any of our solution profiles, you need to set up our DevOps env
 
   * A Ping Identity account and a DevOps user name and DevOps key.
   * For the Workforce solution stack: Either [Docker CE for Windows](https://docs.docker.com/v17.12/install/) or [Docker for macOS](https://docs.docker.com/v17.12/docker-for-mac/install/).
-  * For the Customer solution stack: Deploy to an XL Scalr instance [?? need minimal reqs here]
+  * For the Customer solution stack: A local machine having [?? min. reqs] or a virtual host (such as a Scalr instance) on which to run the stack.
   * [Git](https://git-scm.com/downloads).
 
 ## What you'll do:
@@ -16,7 +16,8 @@ You'll need an evaluation license to use the DevOps resources. You'll clone our 
   1. Create the `${HOME}/projects/devops` directory, if it doesn't already exist.
   2. Clone the solution stacks repository, `https://github.com/pingidentity/pingidentity-solution-stacks.git` to your local `${HOME}/projects/devops` directory.
   3. Run our `setup` script in `${HOME}/projects/devops/pingidentity-solution-stacks` to quickly set up the DevOps environment.
-  4. Go to the [Workforce solution profile instructions](workforce.md) or [Customer solution profile instructions](customer.md) to deploy the stack for either of these profiles.
+  4. (Recommended) Set up a local Docker volume to persist state and data.
+  5. Go to the [Workforce solution profile instructions](workforce.md) or [Customer solution profile instructions](customer.md) to deploy the stack for either of these profiles.
 
   See **Initial setup procedures** for complete instructions.
 

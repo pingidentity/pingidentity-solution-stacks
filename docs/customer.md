@@ -16,6 +16,7 @@ The Customer stack looks like this:
 ## Prerequisites
 
   * You've completed the inital DevOps setup in [Get started](getStarted.md).
+  * A local machine having [?? min. reqs] or a virtual host (such as a Scalr instance) on which to run the stack.
 
 ## What you'll do
 
