@@ -2,18 +2,18 @@
 
 This is a solution profile for a customer authentication authority use case, and is preconfigured as follows:
 
-  * The stack includes PingFederate, PingID SDK, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole (as the admin console for PingDirectory, PingDataGovernance, and PingDataSync).
+  * The stack includes PingFederate, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole (as the admin console for PingDirectory, PingDataGovernance, and PingDataSync). It also includes the latest adapters for PingID SDK.
   * PingFederate connects to PingDirectory over LDAP.
-  * PingDirectory stores the service account information for the AnyCompany example, customized schemas, user accounts (10), and a Consent email newsletter.
+  * PingDirectory is configured for ten (10) sample user accounts and customized schema examples, as well as configuration of the Consent API available in PingDirectory.
   * PingFederate is configured as an OpenID Connect (OIDC) provider.
   * PingFederate connects to PingAccess using OIDC.
-  * PingFederate uses the PingID SDK to provide multi-factor authentication and policies.
+  * PingFederate includes the PingID SDK Integration Kit v1.7 in its `deploy` directory.
   * PingDataGovernance uses PingFederate to validate its access token, used to access the supplied dummy application for PingDataGovernance.
   * PingFederate connects to OAuth Playground using OAuth and OIDC.
   * PingFederate connects to a supplied dummy SAML application.
   * PingFederate connects to another supplied dummy application using the Agentless Integration Kit (AIK).
-  * PingAccess connects to a dummy application using the HTTP headers.
-  * PingDataSync connects to an External Server on PingDirectory.
+  * PingAccess is integrated with a dummy Web application using the HTTP headers.
+  * PingDataSync has been configured to use PingDirectory as an External Server.
 
 > If you currently have one of our other Docker stacks running (such as, the Workforce stack), you'll need to bring down the stack before proceeding.
 
@@ -27,8 +27,8 @@ The Customer stack looks like this:
 
   * You've completed the inital DevOps setup in [Get started](getStarted.md).
   * Docker running on either:
-    - (Recommended) A virtual host (such as a Scalr instance) having a minimum of 2 virtuals CPUs, 8 Gb of memory, and 50 Gb of volume space.
-    - A local machine with a 4-core CPU (more is better), 16 Gb of memory (4 Gb or more will be allocated to the stack), and 50 Gb of disk space.
+    - (Recommended) A virtual host (such as a Scalr instance) having a minimum of 2 virtuals CPUs, 8 Gb of memory, and 60 Gb of volume space.
+    - A local machine with a 6-core CPU, 16 Gb of memory (4 Gb or more will be allocated to the stack), and 60 Gb of disk space.
 
 ## What you'll do
 
@@ -47,8 +47,8 @@ The Customer stack looks like this:
   2. Copy the `docker-compose.yaml` and `env_vars` files in `${HOME}/projects/devops/pingidentity-solution-stacks/Solution-BaselineCustomer` to the `${HOME}/projects/devops/customer` directory you created. For example:
 
   ```text
-  cd ${HOME}/projects/devops/pingidentity-solution-stacks/Solution-WorkForce
-  cp docker-compose.yaml env_vars ${HOME}/projects/devops/workforce
+  cd ${HOME}/projects/devops/pingidentity-solution-stacks/Solution-BaselineCustomer
+  cp docker-compose.yaml env_vars ${HOME}/projects/devops/customer
   ```
 
   3. If you've pulled or downloaded our images from the Ping Identity site on Docker hub, or have been running one of our other Docker stacks, from the `${HOME}/projects/devops/customer` directory, enter:
