@@ -27,8 +27,8 @@ The Customer stack looks like this:
 
   * You've completed the inital DevOps setup in [Get started](getStarted.md).
   * Docker running on either:
-    - (Recommended) A virtual host (such as a Scalr instance) having a minimum of 2 virtuals CPUs, 8 Gb of memory, and 60 Gb of volume space.
-    - A local machine with a 6-core CPU, 16 Gb of memory (4 Gb or more will be allocated to the stack), and 60 Gb of disk space.
+    - (Recommended) A virtual host (such as a Scalr instance) having a minimum of 2 virtuals CPUs, 8 Gb of memory, and 40 Gb of volume space.
+    - A local machine with a minimum configuration of Intel I7 CPU or equivalent, 16 Gb of memory, and 40 Gb of disk space. You'll need to change the default Docker preference settings for resources (Docker Desktop --> Advanced tab) to: a minimum of 5 CPUs, 5 Gb of memory, 2 Gb of swap space.
 
 ## What you'll do
 
