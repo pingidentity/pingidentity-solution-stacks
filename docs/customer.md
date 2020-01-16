@@ -109,7 +109,8 @@ The Customer stack looks like this:
       - Password: 2DirectoryM0re!
 
    * PingDataConsole for PingDataSync
-      - Server: https://pingdataconsole:636
+      - Console URL: https://pingdataconsole:8443/console
+      - Server: pingdatasync
       - User: cn=dmanager
       - Password: 2DatasyncM0re!
 
