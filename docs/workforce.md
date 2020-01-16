@@ -1,13 +1,14 @@
 # Workforce solution profile
 
-This is a solution profile for a workforce authentication authority use case, and is set up as follows:
+This is a solution profile for a workforce authentication authority use case, and is preconfigured as follows:
 
   * The stack includes PingFederate, PingDirectory, and PingDataConsole (as the admin console for PingDirectory).
-  * A network-accessible Microsoft Active Directory (AD) installation is preconfigured in PingFederate as the user store.
+  * A network-accessible Microsoft Active Directory (AD) installation provides the user store.
   * PingFederate uses PingDirectory to store administrator account, OAuth clients and grants, and session information.
-  * You'll use your (prerequisite) PingOne for Enterprise account for SSO.
-  * PingID is preconfigured in PingFederate to provide multi-factor authentication.
-  * Two dummy (stubbed) applications are preconfigured in PingFederate for testing SSO.
+  * PingID provides multi-factor authentication and policies.
+  * Two dummy OpenID Connect (OIDC) applications are preconfigured in PingFederate for testing SSO.
+
+You'll use your (prerequisite) PingOne for Enterprise account for SSO.
 
 > If you currently have one of our other Docker stacks running (such as, the Customer stack), you'll need to bring down the stack before proceeding.
 
@@ -66,7 +67,7 @@ The LDAPS certificate used by AD (`solution-wf-ad-cert.crt`) has been exported a
 
   4. To use PingID for multi-factor authentication:
 
-     a. Base64 encode your PingID client secret. You'll find the PingID client secret in PingOne for Enterprise (Setup --> PingID --> Client Integration). 
+     a. Base64 encode your PingID client secret. You'll find the PingID client secret in PingOne for Enterprise (Setup --> PingID --> Client Integration).
 
      b. Copy the encoded client secret into the `PID_BASE64` assignment in the `env_vars` file located in the [Solution-WorkForce directory](../Solution-WorkForce).
 
@@ -149,7 +150,7 @@ To use Kerberos with Windows clients:
 
 ## Test the deployment
 
-There are two dummy (stubbed) OIDC applications you can use to test SSO. The OAuth configuration for the applications is:
+There are two dummy OIDC applications you can use to test SSO. The OAuth configuration for the applications is:
 
   * `authorization code`, `implicit`, and `refesh token` grants.
   * `Issuer`: localhost
@@ -181,6 +182,14 @@ will remove all of the containers and associated Docker networks. Entering:
   `docker-compose stop`
 
 will stop the running stack without removing any of the containers or associated Docker networks.
+
+## Using PingID for Self Service Password Reset
+
+PingFederate's HTML Form adapter stores the PingID properties as an encrypted JSON Web Token (JWT), unlike the PingID adapter that uses Base64 encoding. This means that you need to manually import your PingID properties file into the HTML Form.
+
+  > The upload link for the PingID properties file is in the `Advanced Properties` section of the HTML Form adapter, and not located near the Self Service Password Reset (SSPR) settings.
+
+You'll also need to enable PingID as the SSPR method. You won't be able to save the changes to the HTML Form adapter without specifying the PingID properties file.
 
 ## (Optional) Use your own AD installation
 

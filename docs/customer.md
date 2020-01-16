@@ -1,9 +1,18 @@
 # Customer solution profile
 
-This is a solution profile for a customer authentication authority use case, and is set up as follows:
+This is a solution profile for a customer authentication authority use case, and is preconfigured as follows:
 
-  * The stack includes PingFederate, PingID SDK, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole (as the admin console for PingDirectory and PingDataGovernance).
-  * ...tbd...
+  * The stack includes PingFederate, PingID SDK, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole (as the admin console for PingDirectory, PingDataGovernance, and PingDataSync).
+  * PingFederate connects to PingDirectory over LDAP.
+  * PingDirectory stores the service account information for the AnyCompany example, customized schemas, user accounts (10), and a Consent email newsletter.
+  * PingFederate is configured as an OpenID Connect (OIDC) provider.
+  * PingFederate connects to PingAccess using OIDC.
+  * PingFederate uses the PingID SDK to provide multi-factor authentication and policies.
+  * PingDataGovernance uses PingFederate to validate its access token, used to access the supplied dummy application for PingDataGovernance.
+  * PingFederate connects to OAuth Playground using OAuth and OIDC.
+  * PingFederate connects to a supplied dummy SAML application.
+  * PingFederate connects to another supplied dummy application using the Agentless Integration Kit (AIK).
+  * PingAccess connects to a dummy application using the HTTP headers.
 
 > If you currently have one of our other Docker stacks running (such as, the Workforce stack), you'll need to bring down the stack before proceeding.
 
@@ -16,7 +25,9 @@ The Customer stack looks like this:
 ## Prerequisites
 
   * You've completed the inital DevOps setup in [Get started](getStarted.md).
-  * A local machine having [?? min. reqs] or a virtual host (such as a Scalr instance) on which to run the stack.
+  * Docker running on either:
+    - (Recommended) A virtual host (such as a Scalr instance) having a minimum of 2 virtuals CPUs, 8 Gb of memory, and 50 Gb of volume space.
+    - A local machine with a 4-core CPU (more is better), 16 Gb of memory (4 Gb or more will be allocated to the stack), and 50 Gb of disk space.
 
 ## What you'll do
 
