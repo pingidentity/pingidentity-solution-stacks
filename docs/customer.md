@@ -13,6 +13,7 @@ This is a solution profile for a customer authentication authority use case, and
   * PingFederate connects to a supplied dummy SAML application.
   * PingFederate connects to another supplied dummy application using the Agentless Integration Kit (AIK).
   * PingAccess connects to a dummy application using the HTTP headers.
+  * PingDataSync connects to an External Server on PingDirectory.
 
 > If you currently have one of our other Docker stacks running (such as, the Workforce stack), you'll need to bring down the stack before proceeding.
 
@@ -111,10 +112,18 @@ The Customer stack looks like this:
     > PingDataSync has an external server connection to PingDirectory, but there are *no* Sync Pipes preconfigured.
 
    - Apache Directory Studio for PingDirectory
-      LDAP Port: 1640
+      LDAP Port: <port#>
       LDAP BaseDN: dc=example,dc=com
       Root Username: cn=dmanager
       Root Password: 2DirectoryM0re!
+
+      Where <port#> is the port assigned to PingDirectory. To find this, enter `docker ps`. The entry for PingDirectory will be similar to:
+
+        ```txt
+        942d425cbc3e        pingidentity/pingdirectory        "tini -- entrypoint.…"   7 minutes ago       Up 7 minutes (healthy)     389/tcp, 689/tcp, 5005/tcp, 0.0.0.0:1452->443/tcp, 0.0.0.0:1645->636/tcp   customer_pingdirectory_1
+        ```
+
+      The LDAP port assignment is at the end. In this case, it's `1645`.
 
 ## Test the depoyment
 
@@ -156,9 +165,17 @@ To access the APIs:
    * PingDirectory Consent API
       You can use either Basic or Bearer authentication. If you are using Bearer Authentication, use `urn:pingdirectory:consent` for unprivileged Consent calls and `urn:pingdirectory:consent_admin` for privileged Consent calls. A sample email_newsletter Consent Definition has been built for you.
 
-      To see the consents, use: GET https://pingdirectory:1640/consent/v1/consents?definition=email_newsletter&subject=user.0
+      To see the consents, use: `GET https://pingdirectory:<port#>/consent/v1/consents?definition=email_newsletter&subject=user.0`.
 
-      To post consents, use: POST https://pingdirectory:1640/consent/v1/consents
+      To post consents, use: `POST https://pingdirectory:<port#>/consent/v1/consents`.
+
+      Where <port#> is the port assigned to PingDirectory. To find this, enter `docker ps`. The entry for PingDirectory will be similar to:
+
+        ```txt
+        942d425cbc3e        pingidentity/pingdirectory        "tini -- entrypoint.…"   7 minutes ago       Up 7 minutes (healthy)     389/tcp, 689/tcp, 5005/tcp, 0.0.0.0:1452->443/tcp, 0.0.0.0:1645->636/tcp   customer_pingdirectory_1
+        ```
+
+      The LDAP port assignment is at the end. In this case, it's `1645`.
 
       See the [PingDirectory Consent API documentation](https://apidocs.pingidentity.com/pingdirectory/consent/v1/api/guide/index.html) for more information.
 
