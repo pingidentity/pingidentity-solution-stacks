@@ -69,44 +69,47 @@ The Customer stack looks like this:
 
     Enter `docker ps` at intervals to display the status of the containers.
 
-  5. When the PingFederate, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole containers all show a status of "Up" and "(healthy)", continue to the next step to log in to the consoles.
+  5. When the PingFederate, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole containers all show a status of "Up" and "(healthy)", continue to the next step.
+  6. Change your `hosts` file to add the IP address of your Docker engine host, and assign the entries:
+
+     <dockerIP>  `pingfederate pingaccess pingdirectory pingdataconsole pingdirectory pingdatagovernance`
 
   6. You can now log in to the administrative consoles:
 
    - PingDirectory
-      Server: https://localhost:636
+      Server: https://pingdirectory:636
       User: cn=dmanager
       Password: 2DirectoryM0re!
 
    - PingDataConsole for PingDirectory
-      Console URL: https://localhost:8443/console
+      Console URL: https://pingdataconsole:8443/console
       Server: pingdirectory
       User: administrator
       Password: 2DirectoryM0re!
 
    - PingFederate
-      Console URL: https://localhost:9999/pingfederate/app
+      Console URL: https://pingfederate:9999/pingfederate/app
       User: administrator
       Password: 2FederateM0re!
 
    - PingAccess
-      Console URL: https://localhost:9000
+      Console URL: https://pingaccess:9000
       User: administrator
       Password: 2AccessM0re!
 
    - PingDataGovernance
-      Server: https://localhost:636
+      Server: https://pingdatagovernance:636
       User: cn=dmanager
       Password: 2DirectoryM0re!
 
    - PingDataConsole for PingDataGovernance
-      Console URL: https://localhost:8443/console
+      Console URL: https://pingdataconsole:8443/console
       Server: pingdatagovernance
       User: administrator
       Password: 2DirectoryM0re!
 
-   - PingDataSync
-      Server: https://localhost:636
+   - PingDataConsole for PingDataSync
+      Server: https://pingdataconsole:636
       User: cn=dmanager
       Password: 2DatasyncM0re!
     > PingDataSync has an external server connection to PingDirectory, but there are *no* Sync Pipes preconfigured.
