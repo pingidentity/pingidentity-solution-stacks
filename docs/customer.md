@@ -76,49 +76,50 @@ The Customer stack looks like this:
 
   6. You can now log in to the administrative consoles:
 
-   - PingDirectory
-      Server: https://pingdirectory:636
-      User: cn=dmanager
-      Password: 2DirectoryM0re!
+   * PingDirectory
+      - Server: https://pingdirectory:636
+      - User: cn=dmanager
+      - Password: 2DirectoryM0re!
 
-   - PingDataConsole for PingDirectory
-      Console URL: https://pingdataconsole:8443/console
-      Server: pingdirectory
-      User: administrator
-      Password: 2DirectoryM0re!
+   * PingDataConsole for PingDirectory
+      - Console URL: https://pingdataconsole:8443/console
+      - Server: pingdirectory
+      - User: administrator
+      - Password: 2DirectoryM0re!
 
-   - PingFederate
-      Console URL: https://pingfederate:9999/pingfederate/app
-      User: administrator
-      Password: 2FederateM0re!
+   * PingFederate
+      - Console URL: https://pingfederate:9999/pingfederate/app
+      - User: administrator
+      - Password: 2FederateM0re!
 
-   - PingAccess
-      Console URL: https://pingaccess:9000
-      User: administrator
-      Password: 2AccessM0re!
+   * PingAccess
+      - Console URL: https://pingaccess:9000
+      - User: administrator
+      - Password: 2AccessM0re!
 
-   - PingDataGovernance
-      Server: https://pingdatagovernance:636
-      User: cn=dmanager
-      Password: 2DirectoryM0re!
+   * PingDataGovernance
+      - Server: https://pingdatagovernance:636
+      - User: cn=dmanager
+      - Password: 2DirectoryM0re!
 
-   - PingDataConsole for PingDataGovernance
-      Console URL: https://pingdataconsole:8443/console
-      Server: pingdatagovernance
-      User: administrator
-      Password: 2DirectoryM0re!
+   * PingDataConsole for PingDataGovernance
+      - Console URL: https://pingdataconsole:8443/console
+      - Server: pingdatagovernance
+      - User: administrator
+      - Password: 2DirectoryM0re!
 
-   - PingDataConsole for PingDataSync
-      Server: https://pingdataconsole:636
-      User: cn=dmanager
-      Password: 2DatasyncM0re!
+   * PingDataConsole for PingDataSync
+      - Server: https://pingdataconsole:636
+      - User: cn=dmanager
+      - Password: 2DatasyncM0re!
+
     > PingDataSync has an external server connection to PingDirectory, but there are *no* Sync Pipes preconfigured.
 
-   - Apache Directory Studio for PingDirectory
-      LDAP Port: <port#>
-      LDAP BaseDN: dc=example,dc=com
-      Root Username: cn=dmanager
-      Root Password: 2DirectoryM0re!
+   * Apache Directory Studio for PingDirectory
+      - LDAP Port: <port#>
+      - LDAP BaseDN: dc=example,dc=com
+      - Root Username: cn=dmanager
+      - Root Password: 2DirectoryM0re!
 
       Where <port#> is the port assigned to PingDirectory. To find this, enter `docker ps`. The entry for PingDirectory will be similar to:
 
@@ -133,54 +134,55 @@ The Customer stack looks like this:
 To access the user runtime ports, use these URLs. You can also find them using the related administrative console:
 
    * SAML
-      URL: https://pingfederate:9031/idp/startSSO.ping?PartnerSpId=https%3A%2F%2Fhttp-bin.org%2Fanything
-      User: user.0 (up to user.10)
-      Password: password
+      - URL: https://pingfederate:9031/idp/startSSO.ping?PartnerSpId=https%3A%2F%2Fhttp-bin.org%2Fanything
+      - User: user.0 (up to user.10)
+      - Password: password
 
    * OIDC
-      URL: https://pingfederate:9031/sp/startSSO.ping?PartnerIdpId=https%3A%2F%2Fpingfederate%3A9031
-      User: user.0 (up to user.10)
-      Password: password
+      - URL: https://pingfederate:9031/sp/startSSO.ping?PartnerIdpId=https%3A%2F%2Fpingfederate%3A9031
+      - User: user.0 (up to user.10)
+      - Password: password
 
    * OAuthPlayground
-      URL: https://pingfederate:9031/OAuthPlayground
-      AuthzCode, Implicit
-        User: user.0 (up to user.10)
-        Password: password
-      ROPC
-        User: joe
-        Password: 2Federate
-      Client Creds
-       User: client_credentials
-       Password: 2Federate
+      - URL: https://pingfederate:9031/OAuthPlayground
+      - AuthzCode, Implicit
+          - User: user.0 (up to user.10)
+          - Password: password
+      - ROPC
+          - User: joe
+          - Password: 2Federate
+      - Client Creds
+          - User: client_credentials
+          - Password: 2Federate
 
    * PingAccess App
-      URL: https://pingaccess/anything
-      User: user.0 (up to user.10)
-      Password: password
+      - URL: https://pingaccess/anything
+      - User: user.0 (up to user.10)
+      - Password: password
 
 To access the APIs:
 
    * PingDataGovernance API
-      URL: https://pingdatagovernance:2443/anything
-      Obtain a token from PingFederate using OAuthPlayground or make Postman calls.
+      - URL: https://pingdatagovernance:2443/anything
+      - Obtain a token from PingFederate using OAuthPlayground or make Postman calls.
 
    * PingDirectory Consent API
-      You can use either Basic or Bearer authentication. If you are using Bearer Authentication, use `urn:pingdirectory:consent` for unprivileged Consent calls and `urn:pingdirectory:consent_admin` for privileged Consent calls. A sample email_newsletter Consent Definition has been built for you.
 
-      To see the consents, use: `GET https://pingdirectory:<port#>/consent/v1/consents?definition=email_newsletter&subject=user.0`.
+     You can use either Basic or Bearer authentication. If you are using Bearer Authentication, use `urn:pingdirectory:consent` for unprivileged Consent calls and `urn:pingdirectory:consent_admin` for privileged Consent calls. A sample email_newsletter Consent Definition has been built for you.
 
-      To post consents, use: `POST https://pingdirectory:<port#>/consent/v1/consents`.
+     To see the consents, use: `GET https://pingdirectory:<port#>/consent/v1/consents?definition=email_newsletter&subject=user.0`.
 
-      Where <port#> is the port assigned to PingDirectory. To find this, enter `docker ps`. The entry for PingDirectory will be similar to:
+     To post consents, use: `POST https://pingdirectory:<port#>/consent/v1/consents`.
 
-        ```txt
-        942d425cbc3e        pingidentity/pingdirectory        "tini -- entrypoint.…"   7 minutes ago       Up 7 minutes (healthy)     389/tcp, 689/tcp, 5005/tcp, 0.0.0.0:1452->443/tcp, 0.0.0.0:1645->636/tcp   customer_pingdirectory_1
-        ```
+     Where <port#> is the port assigned to PingDirectory. To find this, enter `docker ps`. The entry for PingDirectory will be similar to:
 
-      The LDAP port assignment is at the end. In this case, it's `1645`.
+       ```txt
+       942d425cbc3e        pingidentity/pingdirectory        "tini -- entrypoint.…"   7 minutes ago       Up 7 minutes (healthy)     389/tcp, 689/tcp, 5005/tcp, 0.0.0.0:1452->443/tcp, 0.0.0.0:1645->636/tcp   customer_pingdirectory_1
+       ```
 
-      See the [PingDirectory Consent API documentation](https://apidocs.pingidentity.com/pingdirectory/consent/v1/api/guide/index.html) for more information.
+     The LDAP port assignment is at the end. In this case, it's `1645`.
+
+     See the [PingDirectory Consent API documentation](https://apidocs.pingidentity.com/pingdirectory/consent/v1/api/guide/index.html) for more information.
 
 When you no longer want to run this stack, you can either bring the stack down (recommended), or stop the running stack. Entering:
 
