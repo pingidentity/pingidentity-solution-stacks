@@ -83,7 +83,7 @@ The Customer stack looks like this:
 
    * PingDataConsole for PingDirectory
       - Console URL: https://pingdataconsole:8443/console
-      - Server: pingdirectory
+      - Server: pingdirectory:636
       - User: administrator
       - Password: 2DirectoryM0re!
 
@@ -104,13 +104,13 @@ The Customer stack looks like this:
 
    * PingDataConsole for PingDataGovernance
       - Console URL: https://pingdataconsole:8443/console
-      - Server: pingdatagovernance
+      - Server: pingdatagovernance:636
       - User: administrator
       - Password: 2DirectoryM0re!
 
    * PingDataConsole for PingDataSync
       - Console URL: https://pingdataconsole:8443/console
-      - Server: pingdatasync
+      - Server: pingdatasync:636
       - User: cn=dmanager
       - Password: 2DatasyncM0re!
 
