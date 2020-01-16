@@ -10,6 +10,6 @@ Currently, these solution profiles are available:
 
   * **Customer**
 
-    The Customer solution profile is a baseline authentication authority solution for the customer use case, using PingID SDK, PingFederate, PingAccess, PingDirectory, PingDataSync, PingDataGovernance, and PingDataSync. PingID SDK Adapters are available but not configured.
+    The Customer solution profile is a baseline authentication authority solution for the customer use case, using PingFederate, PingAccess, PingDirectory, PingDataSync, PingDataGovernance, and PingDataSync. PingID SDK Adapters are available but not configured.
 
 See [Get started](docs/getStarted.md) to set up the DevOps environment needed to run any of our solution profiles.
