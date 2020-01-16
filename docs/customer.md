@@ -76,7 +76,7 @@ The Customer stack looks like this:
    - PingDirectory
       Server: https://localhost:636
       User: cn=dmanager
-      Password: 2AccessM0re!
+      Password: 2DirectoryM0re!
 
    - PingDataConsole for PingDirectory
       Console URL: https://localhost:8443/console
@@ -97,7 +97,7 @@ The Customer stack looks like this:
    - PingDataGovernance
       Server: https://localhost:636
       User: cn=dmanager
-      Password: 2AccessM0re!
+      Password: 2DirectoryM0re!
 
    - PingDataConsole for PingDataGovernance
       Console URL: https://localhost:8443/console
@@ -108,7 +108,7 @@ The Customer stack looks like this:
    - PingDataSync
       Server: https://localhost:636
       User: cn=dmanager
-      Password: 2AccessM0re!
+      Password: 2DatasyncM0re!
     > PingDataSync has an external server connection to PingDirectory, but there are *no* Sync Pipes preconfigured.
 
    - Apache Directory Studio for PingDirectory
