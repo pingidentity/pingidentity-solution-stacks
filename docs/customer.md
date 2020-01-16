@@ -77,12 +77,12 @@ The Customer stack looks like this:
   6. You can now log in to the administrative consoles:
 
    * PingDirectory
-      - Server: https://pingdirectory:636
+      - Server: pingdirectory:636
       - User: cn=dmanager
       - Password: 2DirectoryM0re!
 
    * PingDataConsole for PingDirectory
-      - Console URL: https://pingdataconsole:8443/console
+      - Console URL: https://pingdataconsole:8443/console/login
       - Server: pingdirectory:636
       - User: administrator
       - Password: 2DirectoryM0re!
@@ -98,18 +98,23 @@ The Customer stack looks like this:
       - Password: 2AccessM0re!
 
    * PingDataGovernance
-      - Server: https://pingdatagovernance:636
+      - Server: pingdatagovernance:636
       - User: cn=dmanager
       - Password: 2DirectoryM0re!
 
    * PingDataConsole for PingDataGovernance
-      - Console URL: https://pingdataconsole:8443/console
+      - Console URL: https://pingdataconsole:8443/console/login
       - Server: pingdatagovernance:636
       - User: administrator
       - Password: 2DirectoryM0re!
 
+   * PingDataSync
+      - Server: pingdatasync:636
+      - User: cn=dmanager
+      - Password: 2DatasyncM0re!
+
    * PingDataConsole for PingDataSync
-      - Console URL: https://pingdataconsole:8443/console
+      - Console URL: https://pingdataconsole:8443/console/login
       - Server: pingdatasync:636
       - User: cn=dmanager
       - Password: 2DatasyncM0re!
