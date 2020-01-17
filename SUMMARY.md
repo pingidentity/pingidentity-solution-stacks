@@ -2,9 +2,9 @@
 
 
 * [Ping Identity Solution Profiles](README.md)
-  * [Get Started](docs/getStarted.md)
-  * [Workforce solution profile](docs/workforce.md)
-  * [Customer solution profile](docs/customer.md)
+  * [Get started](docs/getStarted.md)
+  * [Workforce Solution Profile](docs/workforce.md)
+  * [Customer Solution Profile](docs/customer.md)
 
 ## --
 

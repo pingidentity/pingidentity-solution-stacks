@@ -1,4 +1,4 @@
-# Workforce solution profile
+# Workforce Solution Profile
 
 This is a solution profile for a workforce authentication authority use case, and is preconfigured as follows:
 

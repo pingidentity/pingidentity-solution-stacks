@@ -1,4 +1,4 @@
-# Customer solution profile
+# Customer Solution Profile
 
 This is a solution profile for a customer authentication authority use case, and is preconfigured as follows:
 
