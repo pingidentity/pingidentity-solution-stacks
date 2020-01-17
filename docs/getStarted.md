@@ -64,6 +64,8 @@ You'll need an evaluation license to use the DevOps resources. You'll clone our 
              - /tmp/compose/pingfederate_1:/opt/out
          ```
 
+      c. In the `environment` section, comment out the `SERVER_PROFILE_PATH` setting. The container will then use your `volumes` entry to supply the product state and data, including your configuration changes.
+
          When the container starts, this will bind mount `/tmp/compose/pingfederate_1` to the `/opt/out` directory in the container. You're also able to view the product logs and data in the `/tmp/compose/pingfederate_1` directory.
 
      c. Repeat this process for the remaining container entries in the stack.
