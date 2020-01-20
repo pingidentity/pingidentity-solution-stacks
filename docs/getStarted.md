@@ -51,8 +51,10 @@ If you have an existing, valid product license for the product or products you'l
   * Copy each license file to the server profile location associated with the product. The default server profile locations are:
     - PingFederate: `instance/server/default/conf/pingfederate.lic`
     - PingAccess: `instance/conf/pingaccess.lic`
-    - PingDirectory: `instance/PingDirectory.lic`
-    - PingDataSync: `instance/PingDirectory.lic`
+    - PingDirectory: `instance/pingdirectory.lic`
+    - PingDataGovernance: `instance/pingdatagovernance.lic`
+    - PingDataSync: `instance/pingdatasync.lic`
+    - PingCentral: `instance/conf/pingcentral.lic`
 
   * For our Docker stacks, copy each license file to the `/opt/in` volume that you've mounted. The `/opt/in` directory overlays files onto the products runtime filesystem, the license needs to be named correctly and mounted in the exact location the product checks for valid licenses.
 
