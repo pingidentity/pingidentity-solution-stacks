@@ -42,7 +42,7 @@ The LDAPS certificate used by AD (`solution-wf-ad-cert.crt`) has been exported a
   2. Set up PingFederate as the PingOne for Enterprise identity repository, and configure PingDirectory as the PingFederate directory server.
   3. When configuring PingFederate to use PingOne for Enterprise for SSO, you've the option to configure SSO using Kerberos.
   4. Save the PingFederate and PingOne for Enterprise configurations.
-  5. To use PingID for multi-factor authentication, Base64 encode your PingID client secret and copy it into the `env_vars` file in the [Solution-WorkForce directory](../Solution-WorkForce).
+  5. To use PingID for multi-factor authentication, Base64 encode your PingID client secret and copy it into the `env_vars` file in the [Solution-WorkForce](../Solution-WorkForce) directory.
   6. Test the deployment.
 
   See **Deploy the Workforce stack** and **Set up PingFederate** for more information.
