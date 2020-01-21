@@ -14,11 +14,12 @@ Before deploying any of our solution profiles, you need to set up our DevOps env
 
 You'll need a DevOps evaluation license or an existing product license to use the DevOps resources. You'll clone our `pingidentity-solution-stacks` repository, set up your DevOps environment, and deploy a solution profile stack using Docker Compose. When you first start one of our stacks, the necessary set of product images is automatically pulled from the repository.
 
-  1. Create the `${HOME}/projects/devops` directory, if it doesn't already exist.
-  2. Clone the solution stacks repository, `https://github.com/pingidentity/pingidentity-solution-stacks.git` to your local `${HOME}/projects/devops` directory.
-  3. Run our `setup` script in `${HOME}/projects/devops/pingidentity-solution-stacks` to quickly set up the DevOps environment.
-  4. (Recommended) Set up a local Docker volume to persist state and data.
-  5. Go to the [Workforce solution profile instructions](workforce.md) or [Customer solution profile instructions](customer.md) to deploy the stack for either of these profiles.
+  1. Create a Ping Identity account or use your existing account, and register for our DevOps program.
+  2. Create the `${HOME}/projects/devops` directory, if it doesn't already exist.
+  3. Clone the solution stacks repository, `https://github.com/pingidentity/pingidentity-solution-stacks.git` to your local `${HOME}/projects/devops` directory.
+  4. Run our `setup` script in `${HOME}/projects/devops/pingidentity-solution-stacks` to quickly set up the DevOps environment.
+  5. (Recommended) Set up a local Docker volume to persist state and data.
+  6. Go to the [Workforce solution profile instructions](workforce.md) or [Customer solution profile instructions](customer.md) to deploy the stack for either of these profiles.
 
   See **Initial setup procedures** for complete instructions.
 
