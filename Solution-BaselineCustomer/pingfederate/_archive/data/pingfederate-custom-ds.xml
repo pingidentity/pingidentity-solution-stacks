@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cus:custom-sources xmlns:cus="http://pingidentity.com/2006/03/custom-ds">
+    <cus:custom-source id="new-p14c-yayaay" description="new-p14c-yayaay" driverClassName="com.pingidentity.pf.datastore.other.RestDataSourceDriver" maskAttributeValues="false"/>
+</cus:custom-sources>

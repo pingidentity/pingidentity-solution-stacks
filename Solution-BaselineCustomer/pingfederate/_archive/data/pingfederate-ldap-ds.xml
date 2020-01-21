@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ldap:ldap-sources xmlns:ldap="http://pingidentity.com/2004/09/ldap-ds">
+    <ldap:ldap-source id="LDAP-450B1219957ED192966611469E7443A76ADECB91" maskAttributeValues="false" ldapType="PingDirectory" ldapTypeDesc="PingDirectory" testOnBorrow="false" testOnReturn="false" createIfNecessary="true" minIdle="10" maxActive="100" maxWait="-1" timeBetweenEvictionRunsMillis="60000" readTimeoutMillis="3000" connTimeoutMillis="3000" verifyHost="true" dnsTtlMillis="60000" ldapDnsSrvPrefix="_ldap._tcp" ldapsDnsSrvPrefix="_ldaps._tcp">
+        <ldap:host>pingdirectory</ldap:host>
+        <ldap:principal>cn=dmanager</ldap:principal>
+        <ldap:use-ssl>false</ldap:use-ssl>
+        <ldap:use-dns-srv-records>false</ldap:use-dns-srv-records>
+        <ldap:credentials>eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwia2lkIjoidUxCZG9UaDZKWCIsInZlcnNpb24iOiI5LjIuMS4xIn0..JyN3K6mCgE8macXOc06X2w.hpMBUSyOmZTbSpt_VQK-KQ.1x7nsju6x46OTnrK_mxB8Q</ldap:credentials>
+        <ldap:authenticationMeth>simple</ldap:authenticationMeth>
+        <ldap:description>anycompany-docker</ldap:description>
+        <ldap:name>anycompany-docker</ldap:name>
+        <ldap:binaryAttributes/>
+    </ldap:ldap-source>
+</ldap:ldap-sources>

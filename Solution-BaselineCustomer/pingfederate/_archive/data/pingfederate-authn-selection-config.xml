@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:AuthnSelectionConfig lastModifiedMillis="1554842864663" enableAuthnSelection="true" enableSpAuthnSelection="false" failIfNoSelection="false" xmlns:urn="urn:pingidentity.com:pf:authn-selection">
+    <urn:AuthnSelectionTrees>
+        <urn:AuthnSelectionTree treeName="defaultContract" disabled="false">
+            <urn:AstRoot context="">
+                <urn:AstAction xsi:type="urn:AuthnSourceActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <urn:AuthnSourceKey type="ADAPTER">htmlPD</urn:AuthnSourceKey>
+                    <urn:fallbackToSuccess>true</urn:fallbackToSuccess>
+                </urn:AstAction>
+                <urn:AstChild context="Fail">
+                    <urn:AstAction noOpType="DONE" xsi:type="urn:NoOpActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+                </urn:AstChild>
+                <urn:AstChild context="Success">
+                    <urn:AstAction apcId="tlveBNzDOl9CLL4S" xsi:type="urn:ApcMappingActionType" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <urn:AttributeMapping>
+                            <urn1:AttributeMap Name="subject" Type="Adapter" AttributeSourceId="htmlPD" Value="username" xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                            <urn1:TokenAuthorizationIssuanceCriteria xmlns:urn1="urn:sourceid.org:saml2:metadata-extension:v2"/>
+                        </urn:AttributeMapping>
+                    </urn:AstAction>
+                </urn:AstChild>
+            </urn:AstRoot>
+            <urn:treeDescription>Default AnyCompany Contract</urn:treeDescription>
+        </urn:AuthnSelectionTree>
+    </urn:AuthnSelectionTrees>
+    <urn:DefaultAuthnSources/>
+</urn:AuthnSelectionConfig>

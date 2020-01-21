@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urn:Clients xmlns:urn="urn:pingidentity.com:pf:oauth:client">
+    <urn:Client client_id="pa_wam" name="pa_wam" logo="" secret="w-yJ0K63ldZdHrz3Mz7BXhqisbD-uNq_jv-1DekD9vc.Vbzq81tP.2" persistentGrantExpirationTime="0" enabled="true" lastModified="2019-04-09T03:54:38.987Z" bypassApprovalPage="true" restrictScopes="false" jwksUri="" jwks="" clientAuthnType="SECRET" enforceOneTimeJWT="false" isRequireSignedRequest="false">
+        <urn:Description/>
+        <urn:Grant type="authorization_code"/>
+        <urn:RedirectUri>https://pingaccess/pa/oidc/cb</urn:RedirectUri>
+        <urn:SupplementalInfo key="ALLOW_EXCLUSIVE_SCOPES" value="false"/>
+        <urn:SupplementalInfo key="DEVICE_FLOW_SETTING" value="SERVER_DEFAULT"/>
+        <urn:SupplementalInfo key="PING_ACCESS_LOGOUT_CAPABLE" value="false"/>
+        <urn:SupplementalInfo key="RESTRICT_RESPONSE_TYPES" value="false"/>
+        <urn:SupplementalInfo key="ACCESS_SESSION_REVOCATION_API" value="false"/>
+        <urn:SupplementalInfo key="PERSISTENT_GRANT_IDLE_TIMEOUT_TYPE" value="SERVER_DEFAULT"/>
+        <urn:SupplementalInfo key="VALIDATE_USING_ALL_ELIGIBLE_ATMS" value="false"/>
+        <urn:SupplementalInfo key="ENABLED" value="true"/>
+    </urn:Client>
+</urn:Clients>
