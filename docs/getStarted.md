@@ -135,14 +135,18 @@ If you have an existing, valid product license for the product or products you'l
 
 ## Save your configuration changes
 
-To save any configuration changes you make when using the products in the stack, you need to set up a local Docker volume to persist state and data for the stack. If you don't do this, whenever you bring the stack down your configuration changes will be lost.
+To save any configuration changes you make when using the products in the stack, you need to assign a local Docker volume to persist state and data for the stack. If you don't do this, whenever you bring the stack down your configuration changes will be lost.
 
-You'll bind a Docker volume location to the Docker `/opt/out` directory for the container. Our Docker containers use the `/opt/out` directory to store application data. You can bind a Docker volume for containers in a stack or for single containers:
+You'll bind mount a Docker volume location to the Docker `/opt/out` directory for the container. The location must be to a directory you've not already created. Our Docker containers use the `/opt/out` directory to store application data.
+
+> Make sure the local directory is not already created. Docker needs to create this directory for the bind mount to `/opt/out`.
+
+You can bind mount a Docker volume for containers in a stack or for single containers:
 
   * For a stack:
 
     1. Add a `volumes` section under the container entry for each product in the `docker-compose.yaml` file you're using for the stack.
-    2. Under the `volumes` section, add a location to persist your data. For example:
+    2. Under the `volumes` section, add a location to persist your data. The location must be to a directory you've not already created. For example:
 
        ```yaml
        pingfederate:
