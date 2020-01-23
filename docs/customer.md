@@ -2,7 +2,7 @@
 
 This is a solution profile for a customer authentication authority use case, and is preconfigured as follows:
 
-  * The stack includes PingFederate, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole (as the admin console for PingDirectory, PingDataGovernance, and PingDataSync). It also includes the latest adapters for PingID SDK.
+  * The stack includes PingFederate, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and the Ping data console (as the admin console for PingDirectory, PingDataGovernance, and PingDataSync). It also includes the latest adapters for PingID SDK.
   * PingFederate connects to PingDirectory over LDAP.
   * PingDirectory is configured for ten (10) sample user accounts and customized schema examples, as well as configuration of the Consent API available in PingDirectory.
   * PingFederate is configured as an OpenID Connect (OIDC) provider.
@@ -69,7 +69,7 @@ The Customer stack looks like this:
 
     Enter `docker ps` at intervals to display the status of the containers.
 
-  5. When the PingFederate, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and PingDataConsole containers all show a status of "Up" and "(healthy)", continue to the next step.
+  5. When the PingFederate, PingAccess, PingDirectory, PingDataGovernance, PingDataSync, and the Ping data console containers all show a status of "Up" and "(healthy)", continue to the next step.
   6. Change your `hosts` file to add the IP address of your Docker engine host, and assign the entries:
 
      <dockerIP>  `pingfederate pingaccess pingdirectory pingdataconsole pingdirectory pingdatagovernance`
@@ -81,7 +81,7 @@ The Customer stack looks like this:
       - User: cn=dmanager
       - Password: 2DirectoryM0re!
 
-   * PingDataConsole for PingDirectory
+   * Ping data console for PingDirectory
       - Console URL: https://pingdataconsole:8080/console/login
       - Server: pingdirectory:636
       - User: administrator
@@ -102,7 +102,7 @@ The Customer stack looks like this:
       - User: cn=dmanager
       - Password: 2DirectoryM0re!
 
-   * PingDataConsole for PingDataGovernance
+   * Ping data console for PingDataGovernance
       - Console URL: https://pingdataconsole:8080/console/login
       - Server: pingdatagovernance:636
       - User: administrator
@@ -113,7 +113,7 @@ The Customer stack looks like this:
       - User: cn=dmanager
       - Password: 2DatasyncM0re!
 
-   * PingDataConsole for PingDataSync
+   * Ping data console for PingDataSync
       - Console URL: https://pingdataconsole:8080/console/login
       - Server: pingdatasync:636
       - User: cn=dmanager

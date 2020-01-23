@@ -2,7 +2,7 @@
 
 This is a solution profile for a workforce authentication authority use case, and is preconfigured as follows:
 
-  * The stack includes PingFederate, PingDirectory, and PingDataConsole (as the admin console for PingDirectory).
+  * The stack includes PingFederate, PingDirectory, and the Ping data console (as the admin console for PingDirectory).
   * A network-accessible Microsoft Active Directory (AD) installation provides the user store.
   * PingFederate uses PingDirectory to store administrator account, OAuth clients and grants, and session information.
   * PingID provides multi-factor authentication and policies.
@@ -81,7 +81,7 @@ The LDAPS certificate used by AD (`solution-wf-ad-cert.crt`) has been exported a
 
     Enter `docker ps` at intervals to display the status of the containers.
 
-  6. When the PingFederate, PingDirectory, and PingDataConsole containers all show a status of "Up" and "(healthy)", continue to the next section to log in to the PingFederate console.
+  6. When the PingFederate, PingDirectory, and the Ping data console containers all show a status of "Up" and "(healthy)", continue to the next section to log in to the PingFederate console.
 
 ## Set up PingFederate
 
