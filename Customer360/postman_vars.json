@@ -34,12 +34,12 @@
         },
         {
             "key": "sdkAppId",
-            "value": "fe92b82b-dc17-4a3d-a864-990a6f0e30d9",
+            "value": "YourSDKAppID",
             "enabled": true
         },
         {
             "key": "sdkAppRedirectUri",
-            "value": "com.cpricelab.ciba://cb",
+            "value": "YourSDKAppRedirectURI",
             "enabled": true
         },
         {
