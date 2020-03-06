@@ -1,0 +1,11 @@
+PING_IDENTITY_ACCEPT_EULA=YES
+
+# PF Logging Level
+PF_LOG_LEVEL=DEBUG
+
+# PD User BASE DN
+USER_BASE_DN=dc=example.com
+
+# PF Admin Password
+# Note - this should match `pfAdminPwd` in postman_vars.json
+PF_USER_PWD=2FederateM0re

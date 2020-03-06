@@ -1,0 +1,74 @@
+{
+    "id": "40199d03-d15c-47e4-b502-8b62f98479d1",
+    "name": "Solution-Customer360",
+    "values": [
+        {
+            "key": "pfAdminURL",
+            "value": "https://pingfederate:9999",
+            "enabled": true
+        },
+        {
+            "key": "pfBaseURL",
+            "value": "https://ext-docker.cpricelab.com:9031",
+            "enabled": true
+        },
+        {
+            "key": "oauthSecret",
+            "value": "2FederateM0re",
+            "enabled": true
+        },
+        {
+            "key": "pfAdmin",
+            "value": "api-admin",
+            "enabled": true
+        },
+        {
+            "key": "pfAdminPwd",
+            "value": "2FederateM0re",
+            "enabled": true
+        },
+        {
+            "key": "pingIdSdk",
+            "value": "#Auto-Generated from PingOne, downloaded by id=[000000] email=[bogus@pingidentity.com]\n#Thu Jan 09 11:17:59 MST 2020\napi_key=YourAPIKey\ntoken=YourToken\npingidsdk_url=https://sdk.pingid.com/pingid\naccount_id=YourSDKAccountID",
+            "enabled": true
+        },
+        {
+            "key": "sdkAppId",
+            "value": "fe92b82b-dc17-4a3d-a864-990a6f0e30d9",
+            "enabled": true
+        },
+        {
+            "key": "sdkAppRedirectUri",
+            "value": "com.cpricelab.ciba://cb",
+            "enabled": true
+        },
+        {
+            "key": "pfAuthnApiUrl",
+            "value": "{{pfBaseURL}}/pf-ws/authn/explorer",
+            "enabled": true
+        },
+        {
+            "key": "cors_host",
+            "value": "ext-docker.cpricelab.com",
+            "enabled": true
+        },
+        {
+            "key": "pdAdminUrl",
+            "value": "https://pingdirectory:443",
+            "enabled": true
+        },
+        {
+            "key": "pdAdmin",
+            "value": "cn=administrator",
+            "enabled": true
+        },
+        {
+            "key": "pdAdminPwd",
+            "value": "2FederateM0re",
+            "enabled": true
+        }
+    ],
+    "_postman_variable_scope": "environment",
+    "_postman_exported_at": "2020-02-24T18:49:30.401Z",
+    "_postman_exported_using": "Postman/7.18.1"
+}
