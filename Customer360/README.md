@@ -1,4 +1,4 @@
-Customer360 Solution provides a CIAM configuration for PingDirectory \ PingFederate
+The **Customer360** Solution provides a CIAM configuration for PingDirectory \ PingFederate
 
 ![Solution - Customer360](Customer360.png)
 
