@@ -21,7 +21,7 @@ services:
       - pingnet-dmz
 
   pingdirectory:
-    image: pingidentity/pingdirectory:edge
+    image: pingidentity/pingdirectory:latest
     env_file:
       - ~/.pingidentity/devops
       - ./env_vars
