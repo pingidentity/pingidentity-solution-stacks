@@ -14,22 +14,6 @@ PID_BASE64={base64 encoded pingid.properties}
 # Default for PD Baseline is `dc=example,dc=com`
 USER_BASE_DN={Base PD User DN}
 
-
-# PF Base URL \ SAML EntityID
-PF_BASE_URL={Base PF URL}
-
-# PF Logging Level
-PF_LOG_LEVEL=DEBUG
-
-# PingID Properties -- base64 encoded value
-PID_BASE64={base64 encoded pingid.properties}
-
-# PD Variables
-BASE_CLASS=domain
-BASE_ATTRIBUTE=dc: {Base PD Root}
-USER_ORG_BASE={Base PD Root}
-USER_BASE_DN={Base PD User DN}
-
 # AD Variables
 AD_DC_HOST={Host of Domain Controller}
 AD_BASE_DN={Base AD Domain DN}
