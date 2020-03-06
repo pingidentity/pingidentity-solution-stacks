@@ -18,7 +18,7 @@ ROOT_USER_PASSWORD_FILE=${BASE}/staging/pwd
 ADMIN_USER_PASSWORD_FILE=${ROOT_USER_PASSWORD_FILE}
 
 # The user base dn may be provided (Default: dc=example,dc=com)
-USER_BASE_DN=dc=customer360.com
+# USER_BASE_DN=dc=customer360.com
 
 # The Java heap size may be provided
 # MAX_HEAP_SIZE=384m
