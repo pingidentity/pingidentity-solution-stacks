@@ -12,6 +12,9 @@ Customer360 Solution provides a CIAM configuration for PingDirectory \ PingFeder
 * Logs for the stack can be watched with `docker-compose logs -f`
 * Logs for individual services can be watched with `docker-compose logs -f {service}`
 
+The bulk of the configuration is performed by a Postman API Collection:  
+https://documenter.getpostman.com/view/1239082/SzRw2Axv
+
 ## Solution Configuration
 
 To access the Admin UI for PF go to:  
