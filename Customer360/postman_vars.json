@@ -59,7 +59,7 @@
         },
         {
             "key": "pdAdmin",
-            "value": "cn=administrator",
+            "value": "cn=dmanager",
             "enabled": true
         },
         {
