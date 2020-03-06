@@ -10,9 +10,5 @@ dsconfig create-external-server \
 dsconfig create-sync-destination \
 	--destination-name PD_Destination \
 	--type ping-identity \
-	--set base-dn:ou=activedirectory,${USER_BASE_DN} \
+	--set base-dn:ou=sync,${USER_BASE_DN} \
 	--set server:pingdirectory
-
-dsconfig set-log-publisher-prop \
-    --publisher-name 'File-Based Sync Logger' \
-    --add include-sync-pipe:AD_Source-to-PD_Destination
