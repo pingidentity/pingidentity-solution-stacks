@@ -36,6 +36,29 @@ services:
       - 1443:443
     networks:
       - pingnet-internal
+
+  pingdatasync:
+    image: pingidentity/pingdatasync:latest
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
+      - SERVER_PROFILE_PATH=Customer360/pingdatasync
+    env_file:
+      - ~/.pingidentity/devops
+      - ./env_vars
+    #volumes:
+    #   - ${HOME}/projects/devops/volumes/simple-sync.pingdatasync:/opt/out
+    ulimits:
+      nproc:
+        soft: 16384
+        hard: 16384
+      nofile:
+        soft: 65535
+        hard: 65535
+    ports:
+      - 3636:636
+      - 3443:443
+    networks:
+      - pingnet-internal
   
   pingdataconsole:
     image: pingidentity/pingdataconsole:latest
