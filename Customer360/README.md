@@ -31,7 +31,7 @@ https://documenter.getpostman.com/view/1239082/SzRw2Axv
 | `globalPwd` | Common Password | 2FederateM0re |
 
 **`postman_vars.json`**
-| Variable | Description | Default |
+| Variable | Description | Customer Values |
 | -------- | ----------- | ------- |
 | `pfBaseURL` | PingFed Runtime URL | https://{{your PF public FQDN}}:9031 |
 | `pingIdSdk` | PingID SDK Properties  | Your SDK Properties file |
