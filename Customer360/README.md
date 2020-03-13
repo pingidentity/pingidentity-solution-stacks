@@ -58,12 +58,14 @@ This configuration includes:
 
 ### Connections
 * PingID SDK Connector
-  * Auto-enrollment of Email \ SMS -- `(mail=*)`
+  * Auto-enrollment of Email \ SMS -- `(mobile=*)`
 
 ### PingID SDK - Special Considerations
 The PingID adapter uses the secrets from your PingID tenant to create the proper calls to the service. As such, storing those values in a public location, such as GitHub, should be considered **risky**.
 
 For this Profile, you can place the text from a `pingidsdk.properties` file into `postman_vars.json`. The API calls will base64 encode and inject into the PingIDSDK Adapter and HTML Form (for Self-Service Password Reset)
+
+You will also need an email template created called `auth_without_payload` for the PF SDK Adapter to use Email as an OTP method. 
 
 ### AuthN Policy - Default AuthN Experiences
 Extended Property Selector
