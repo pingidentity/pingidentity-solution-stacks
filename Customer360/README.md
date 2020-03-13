@@ -39,6 +39,8 @@ https://documenter.getpostman.com/view/1239082/SzRw2Axv
 
 ## Solution Configuration
 
+### PingFederate
+---
 To access the Admin UI for PF go to:  
 https://{{PF_HOSTNAME}}:9999/pingfederate
 
@@ -115,3 +117,27 @@ https://`${PF_BASE_URL}`/idp/startSSO.ping?PartnerSpId=Dummy-SAML
 
 ### Users
 `user.[0-4]` / `2FederateM0re`
+
+---
+### PingDirectory
+
+To access the Admin Console for PD go to:  
+https://{{PD_HOSTNAME}}:8443/console
+
+Server:  
+`pingdirectory`
+
+Credentials (LDAP):  
+`Administrator` / `2FederateM0re`
+
+---
+### PingDataSync
+
+To access the Admin Console for PDS go to:  
+https://{{PDS_HOSTNAME}}:8443/console
+
+Server:  
+`pingdatasync`
+
+Credentials (LDAP):  
+`Administrator` / `2FederateM0re`
