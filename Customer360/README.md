@@ -33,7 +33,7 @@ https://documenter.getpostman.com/view/1239082/SzRw2Axv
 **`postman_vars.json`**
 | Variable | Description | Default |
 | -------- | ----------- | ------- |
-| `pfBaseURL` | PingFed Runtime URL | https://{{your host}}:9031 |
+| `pfBaseURL` | PingFed Runtime URL | https://{{your PF public FQDN}}:9031 |
 | `pingIdSdk` | PingID SDK Properties  | Your SDK Properties file |
 | `sdkAppId` | PID SDK Application ID | Your SDK App ID |
 
