@@ -15,6 +15,28 @@ The **Customer360** Solution provides a CIAM configuration for PingDirectory \ P
 The bulk of the configuration is performed by a Postman API Collection:  
 https://documenter.getpostman.com/view/1239082/SzRw2Axv
 
+**Note:** The collection has a set of default variables defined - to override them, place them in the `postman_vars.json` file.
+
+**Collection Defaults**
+| Variable | Description | Default |
+| -------- | ----------- | ------- |
+| `pfAdminURL` | PingFed Administration URL | https://pingfederate:9999 |
+| `pdAdminUrl` | PingDir Administration URL | https://pingdirectory:443 |
+| `pfAdmin` | PingFed API Admin Account | api-admin |
+| `pfAdminPwd` | PingFed API Admin Password| {{globalPwd}} |
+| `pdAdmin` | PingFed Admin Account | cn=dmanager |
+| `pdAdminPwd` | PingDir Admin Password| {{globalPwd}} |
+| `oauthSecret` | PingLogon Client Secret | {{globalPwd}} |
+| `pfAuthnApiUrl` | PF AuthN App URL | {{pfBaseURL}}/pf-ws/authn/explorer |
+| `globalPwd` | Common Password | 2FederateM0re |
+
+**`postman_vars.json`**
+| Variable | Description | Default |
+| -------- | ----------- | ------- |
+| `pfBaseURL` | PingFed Runtime URL | https://{{your host}}:9031 |
+| `pingIdSdk` | PingID SDK Properties  | Your SDK Properties file |
+| `sdkAppId` | PID SDK Application ID | Your SDK App ID |
+
 ## Solution Configuration
 
 To access the Admin UI for PF go to:  
