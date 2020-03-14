@@ -65,7 +65,10 @@ The PingID adapter uses the secrets from your PingID tenant to create the proper
 
 For this Profile, you can place the text from a `pingidsdk.properties` file into `postman_vars.json`. The API calls will base64 encode and inject into the PingIDSDK Adapter and HTML Form (for Self-Service Password Reset)
 
-You will also need an email template created called `auth_without_payload` for the PF SDK Adapter to use Email as an OTP method. 
+### PingID SDK - User Enrollment
+The PingID SDK Connector is also configured to automatically enroll any User with a valid SMS number in the `mobile` field. If that User also has an email address, it will be enrolled as a secondary method.
+
+**Note:** For email OTP - you will also need an email template created called `auth_without_payload` for the PF SDK Adapter to use Email as an OTP method. 
 
 ### AuthN Policy - Default AuthN Experiences
 Extended Property Selector
