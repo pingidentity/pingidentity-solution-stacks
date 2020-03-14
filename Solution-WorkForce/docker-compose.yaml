@@ -2,8 +2,8 @@ version: "3"
 
 services:
   pingfederate:
-    image: pingidentity/pingfederate:edge
-    command: wait-for pingdirectory:389 -t 300 -- entrypoint.sh start-server
+    image: pingidentity/pingfederate:latest
+    command: wait-for pingdirectory:389 -t 420 -- entrypoint.sh start-server
     env_file:
       - ~/.pingidentity/devops
       - ./env_vars
@@ -17,11 +17,10 @@ services:
       - 9031:9031
       - 9999:9999
     networks:
-      - pingnet-internal
-      - pingnet-dmz
+      - pingnet
 
   pingdirectory:
-    image: pingidentity/pingdirectory:edge
+    image: pingidentity/pingdirectory:latest
     env_file:
       - ~/.pingidentity/devops
       - ./env_vars
@@ -39,7 +38,7 @@ services:
       - 1636:636
       - 1443:443
     networks:
-      - pingnet-internal
+      - pingnet
   
   pingdataconsole:
     image: pingidentity/pingdataconsole:edge
@@ -47,8 +46,7 @@ services:
       - 8080:8080
       - 8443:8443
     networks: 
-      - pingnet-internal
+      - pingnet
               
 networks:
-    pingnet-internal:
-    pingnet-dmz:
+    pingnet:

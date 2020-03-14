@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+#*
+The server renders this HTML page in an end-user's browser to
+collect information about their device.
+
+Velocity variables (identified by the $ character) are generated
+at runtime by the server.
+*#
+
+<!-- template name: iovation.adapter.template.html -->
+#set( $messageKeyPrefix = "iovation.adapter.template." )
+
+<html lang="$locale.getLanguage()" dir="ltr">
+<head>
+    <title>$languagePackMessages.getMessage($messageKeyPrefix, "title")</title>
+    <base href="$CurrentPingFedBaseURL"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/iovation.css"/>
+    <script type="text/javascript" src="../assets/scripts/iovation_spinner.js"></script>
+</head>
+
+<body>
+    <div class="ping-container">
+        <div class="ping-header">
+            $languagePackMessages.getMessage($messageKeyPrefix, "header")
+        </div>
+        <div class="ping-body-container" style="min-height: auto;">
+            <div class="spinner-logo"></div>
+            <div class="spinner-box">
+                <div id="spinner"></div>
+                <div class="spinner-text">
+                    $languagePackMessages.getMessage($messageKeyPrefix, "spinner")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var opts = {
+                lines: 13,
+                length: 14,
+                width: 4,
+                radius: 12,
+                color: '#fff',
+                trail: 90,
+                className: 'spinner',
+                top: '40%',
+                left: '50%'
+            };
+            var target = document.getElementById('spinner');
+            new Spinner(opts).spin(target);
+
+            setTimeout(submitForm, $timeout);
+        }
+    </script>
+    <form id="bb_form" method="POST" action="$action">
+        <input type="hidden" name="pf.iovation.blackbox" id="bb_input">
+    </form>
+    <script language="javascript" src="../assets/scripts/iovation_adapter_default.js"></script>
+    <script language="javascript" src="../assets/scripts/iovation_device_profiling.js"></script>
+</body>

@@ -1,0 +1,23 @@
+{
+	"id": "40199d03-d15c-47e4-b502-8b62f98479d1",
+	"name": "Solution-Customer360-Advanced",
+	"values": [
+		{
+			"key": "pfBaseURL",
+			"value": "YourPFBaseURL (https://pingfed.ping-demos.com:9031)",
+			"enabled": true
+		},
+		{
+			"key": "pingIdSdk",
+			"value": "#Auto-Generated from PingOne, downloaded by id=[000000] email=[bogus@pingidentity.com]\n#Thu Jan 09 11:17:59 MST 2020\napi_key=YourAPIKey\ntoken=YourToken\npingidsdk_url=https://sdk.pingid.com/pingid\naccount_id=YourAccountID",
+			"enabled": true
+		},
+		{	"key": "sdkAppId",
+			"value": "YourPIDSDKAppID",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-02-24T18:49:30.401Z",
+	"_postman_exported_using": "Postman/7.18.1"
+}
