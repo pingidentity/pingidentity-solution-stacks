@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "pfBaseURL",
-			"value": "YourPFBaseURL (https://pingfed.ping-demos.com:9031)",
+			"value": " https://YourPingFedHost:9031",
 			"enabled": true
 		},
 		{
