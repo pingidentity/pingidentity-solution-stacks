@@ -99,7 +99,7 @@ The Authentication Experience is controlled by setting the `Extended Properties`
 The AuthN API is enabled -- a value in the Extended Property of `API` will trigger it.
 * ID-First --> HTML Form with LIP --> AuthN API Explorer 
 
-### [Optional] Applications ([Collection](https://www.getpostman.com/collections/9bd0b2aa44487c0204f0))
+### Applications
 Two applications are pre-wired:
 
 **SAML:**  
@@ -108,8 +108,9 @@ https://`${PF_BASE_URL}`/idp/startSSO.ping?PartnerSpId=Dummy-SAML
 **OAuth \ OIDC:**  
 `Issuer` == `${PF_BASE_URL}`  
 
-**OIDC Logon**
+**OIDC Logon**  
 `client_id` == PingLogon  
+`client_secret` == 2FederateM0re 
 
 **Introspect**  
 `client_id` == PingIntrospect  
