@@ -3,6 +3,14 @@ The **Customer360** Solution provides a CIAM configuration for PingDirectory \ P
 ![Solution - Customer360](Customer360.png)
 
 ---
+## Pre-Requisites
+* Docker (https://www.docker.com/get-started)
+* Docker Compose (https://docs.docker.com/compose/install/)
+* PingID SDK Tenant / SDK Application
+  * Logon to PingOne Admin (https://admin.pingone.com)
+  * Download PingID SDK Properties (Setup --> PingID --> Client Integrations)
+  * Create SDK Application (Applications --> SDK Applications)
+
 ## Deployment
 * Copy the `docker-compose.yaml`, `env_vars.sample` and `postman_vars.json.sample` files to a folder
 * Rename files to `env_vars` and `postman_vars.json`
