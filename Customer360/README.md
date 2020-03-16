@@ -37,7 +37,7 @@ https://documenter.getpostman.com/view/1239082/SzRw2Axv
 | `pdAdminPwd` | PingDir Admin Password| {{globalPwd}} |
 | `oauthSecret` | PingLogon Client Secret | {{globalPwd}} |
 | `pfAuthnApiUrl` | PF AuthN App URL | {{pfBaseURL}}/pf-ws/authn/explorer |
-| `globalPwd` | Common Password | 2FederateM0re |
+| `globalPwd` | Global Password | 2FederateM0re |
 
 **`postman_vars.json`**
 | Variable | Description | Customer Values |
