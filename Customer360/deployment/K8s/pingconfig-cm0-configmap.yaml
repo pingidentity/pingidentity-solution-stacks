@@ -1,0 +1,50 @@
+apiVersion: v1
+data:
+  postman_vars.json: |
+    {
+        "id": "40199d03-d15c-47e4-b502-8b62f98479d1",
+        "name": "Solution-CIAM-Advanced",
+        "values": [
+            {
+                "key": "pfBaseURL",
+                "value": "https://demo.cpricelab.com",
+                "enabled": true
+            },
+            {
+                "key": "pingIdSdk",
+                "value": "#Auto-Generated from PingOne, downloaded by id=[158000] email=[cprice+lab@pingidentity.com]\n#Thu Jan 09 11:17:59 MST 2020\napi_key=NTRmZTQ1OTAtNzQ1OC00OGRiLWJjMDQtMGNjNzk5ZTk5YTY0\ntoken=0200ae2b7e49470eb0f33ab6816ddd15\npingidsdk_url=https://sdk.pingid.com/pingid\naccount_id=c6d8cf58-6d78-49da-938a-4fb44f746397",
+                "enabled": true
+            },
+            {
+                "key": "sdkAppId",
+                "value": "fe92b82b-dc17-4a3d-a864-990a6f0e30d9",
+                "enabled": true
+            },
+            {
+                "key": "pfAuthnApiUrl",
+                "value": "https://cold-handstand.glitch.me",
+                "enabled": true
+            },
+            {
+                "key": "pdAdminUrl",
+                "value": "https://pingdirectory:1443",
+                "enabled": true
+            },
+            {
+                "key": "paVirtualHost",
+                "value": "demo.cpricelab.com",
+                "enabled": true
+            }
+        ],
+        "_postman_variable_scope": "environment",
+        "_postman_exported_at": "2020-02-24T18:49:30.401Z",
+        "_postman_exported_using": "Postman/7.18.1"
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    use-subpath: "true"
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pingconfig
+  name: pingconfig-cm0

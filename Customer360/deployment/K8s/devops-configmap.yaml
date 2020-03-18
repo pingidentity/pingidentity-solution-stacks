@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  PING_IDENTITY_DEVOPS_HOME: {{Location of Your Ping DevOps file}}
+  PING_IDENTITY_DEVOPS_KEY: {{Your Ping DevOps Key}}
+  PING_IDENTITY_DEVOPS_TAG: {{Your preferred DevOps version tag}}
+  PING_IDENTITY_DEVOPS_USER: {{Your Ping DevOps Username}}
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pingaccess-devops
+  name: devops

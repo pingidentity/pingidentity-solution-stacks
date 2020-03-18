@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f Compose/docker-compose.yaml --volumes configMap
+    kompose.version: 1.21.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pingconfig
+  name: pingconfig
+spec:
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f Compose/docker-compose.yaml --volumes configMap
+        kompose.version: 1.21.0 ()
+      creationTimestamp: null
+      labels:
+        io.kompose.service: pingconfig
+    spec:
+      containers:
+      - env:
+        - name: COLLECTIONS
+          value: https://www.getpostman.com/collections/344bbc13f4ccd4ebc5f5,https://www.getpostman.com/collections/eaa397bd3a35ef3095c1
+        image: pricecs/pingconfigurator
+        imagePullPolicy: ""
+        name: pingconfig
+        resources: {}
+        volumeMounts:
+        - mountPath: /usr/src/app/postman_vars.json
+          name: pingconfig-cm0
+          subPath: postman_vars.json
+      restartPolicy: Never
+      serviceAccountName: ""
+      volumes:
+      - configMap:
+          items:
+          - key: postman_vars.json
+            path: postman_vars.json
+          name: pingconfig-cm0
+        name: pingconfig-cm0
+status: {}

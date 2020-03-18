@@ -1,16 +1,14 @@
-The **Customer360** Solution provides a CIAM configuration for PingDirectory \ PingFederate
+The Ping **Customer360** Solution provides a CIAM package for PingDirectory \ PingFederate \ PingDataSync
 
 ![Solution - Customer360](Customer360.png)
 
 ---
 ## Deployment
-* Copy the `docker-compose.yaml`, `env_vars.sample` and `postman_vars.json.sample` files to a folder
-* Rename files to `env_vars` and `postman_vars.json`
-* Modify the `env_vars` file to match your environment
-* Modify the `postman.json` file to match your environment
-* Launch the stack with `docker-compose up -d`
-* Logs for the stack can be watched with `docker-compose logs -f`
-* Logs for individual services can be watched with `docker-compose logs -f {service}`
+This repo contains 2 configuration sets for deployment:
+* [Docker Compose](deployment/Compose)
+* [Kubernetes](deployment/K8s)
+
+## Deployment Configuration
 
 The bulk of the configuration is performed by a Postman API Collection:  
 https://documenter.getpostman.com/view/1239082/SzRw2Axv
@@ -30,7 +28,7 @@ https://documenter.getpostman.com/view/1239082/SzRw2Axv
 | `pfAuthnApiUrl` | PF AuthN App URL | {{pfBaseURL}}/pf-ws/authn/explorer |
 | `globalPwd` | Common Password | 2FederateM0re |
 
-**`postman_vars.json`**
+**Compose - `postman_vars.json`** or **K8s - `pingconfig-cm0-configmap.yaml`**
 | Variable | Description | Customer Values |
 | -------- | ----------- | ------- |
 | `pfBaseURL` | PingFed Runtime URL | https://{{your PF public FQDN}}:9031 |

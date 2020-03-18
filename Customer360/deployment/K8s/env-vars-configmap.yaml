@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  PF_LOG_LEVEL: "DEBUG"
+  PF_USER_PWD: "2FederateM0re"
+  PING_DEBUG: "true"
+  PING_IDENTITY_ACCEPT_EULA: "YES"
+  USER_BASE_DN: "dc=customer360.com"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pingaccess-env-vars
+  name: env-vars
