@@ -4,8 +4,6 @@ The Ping **Customer360** Solution provides a CIAM package for PingDirectory \ Pi
 
 ---
 ## Pre-Requisites
-* Docker (https://www.docker.com/get-started)
-* Docker Compose (https://docs.docker.com/compose/install/)
 * PingID SDK Tenant / SDK Application
   * Logon to PingOne Admin (https://admin.pingone.com)
   * Download PingID SDK Properties file (Setup --> PingID --> Client Integrations --> Integrate with PingID SDK)
