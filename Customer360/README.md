@@ -3,6 +3,15 @@ The Ping **Customer360** Solution provides a CIAM package for PingDirectory \ Pi
 ![Solution - Customer360](Customer360.png)
 
 ---
+## Pre-Requisites
+* Docker (https://www.docker.com/get-started)
+* Docker Compose (https://docs.docker.com/compose/install/)
+* PingID SDK Tenant / SDK Application
+  * Logon to PingOne Admin (https://admin.pingone.com)
+  * Download PingID SDK Properties file (Setup --> PingID --> Client Integrations --> Integrate with PingID SDK)
+  * Create SDK Application (Applications --> PingID SDK Applications)
+    * Enable Email / SMS (Application --> Configuration)
+
 ## Deployment
 This repo contains 2 configuration sets for deployment:
 * [Docker Compose](deployment/Compose)
@@ -26,7 +35,7 @@ https://documenter.getpostman.com/view/1239082/SzRw2Axv
 | `pdAdminPwd` | PingDir Admin Password| {{globalPwd}} |
 | `oauthSecret` | PingLogon Client Secret | {{globalPwd}} |
 | `pfAuthnApiUrl` | PF AuthN App URL | {{pfBaseURL}}/pf-ws/authn/explorer |
-| `globalPwd` | Common Password | 2FederateM0re |
+| `globalPwd` | Global Password | 2FederateM0re |
 
 **Compose - `postman_vars.json`** or **K8s - `pingconfig-cm0-configmap.yaml`**
 | Variable | Description | Customer Values |
