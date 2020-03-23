@@ -1,0 +1,82 @@
+version: "3"
+
+services:
+  pingfederate:
+    image: pingidentity/pingfederate:latest
+    command: wait-for pingdirectory:389 -t 600 -- entrypoint.sh start-server
+    env_file:
+      - ~/.pingidentity/devops
+      - ./env_vars
+    environment:
+    - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
+    - SERVER_PROFILE_PATH=Workforce360/pingfederate
+    ports:
+      - 9031:9031
+      - 9999:9999
+
+  pingdirectory:
+    image: pingidentity/pingdirectory:latest
+    env_file:
+      - ~/.pingidentity/devops
+      - ./env_vars
+    environment:
+    - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
+    - SERVER_PROFILE_PATH=Workforce360/pingdirectory
+    ports:
+      - 1636:636
+      - 1443:443
+  
+  pingdataconsole:
+    image: pingidentity/pingdataconsole:latest
+    ports:
+      - 8080:8080
+      - 8443:8443
+
+  pingconfig:
+    image: pricecs/pingconfigurator
+    environment:
+      - COLLECTIONS=https://www.getpostman.com/collections/f0860d4add56123536c2
+    volumes: 
+      # An environment file should be injected into the image - this file should contain your specfic info and secrets
+      - ./postman_vars.json:/usr/src/app/postman_vars.json
+
+  pingdatasync:
+    image: pingidentity/pingdatasync:latest
+    environment:
+    - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
+    - SERVER_PROFILE_PATH=Workforce360/pingdatasync
+    env_file:
+      - ~/.pingidentity/devops
+      - ./env_vars
+    ulimits:
+      nproc:
+        soft: 16384
+        hard: 16384
+      nofile:
+        soft: 65535
+        hard: 65535
+    ports:
+      - 2636:636
+      - 2443:443
+
+  pingcentral:
+    image: pingidentity/pingcentral:latest
+    command: wait-for pingfederate:9031 -t 7200 -- entrypoint.sh start-server
+    environment:
+      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-solution-stacks.git
+      - SERVER_PROFILE_PATH=Workforce360/pingcentral/external-mysql-db
+    env_file:
+      - ~/.pingidentity/devops
+      - ./env_vars
+    ports:
+      - "9022:9022"
+    depends_on:
+      - "pingcentral-db"
+
+  pingcentral-db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 2Federate
+    ports:
+      - "3306:3306"

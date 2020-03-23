@@ -1,0 +1,34 @@
+{
+	"id": "40199d03-d15c-47e4-b502-8b62f98479d1",
+	"name": "Solution-Workforce360",
+	"values": [
+		{
+			"key": "pfBaseURL",
+			"value": "https://ext-docker.cpricelab.com:9031",
+			"enabled": true
+		},
+		{
+			"key": "pingId",
+			"value": "#Auto-Generated from PingOne, downloaded by id=[000000] email=[bogus@pingidentity.com]\n#Sat Jan 25 10:35:09 MST 2020\nuse_base64_key={{YourBase64Key}}=\nuse_signature=true\ntoken={{YourToken}}\nidp_url=https://idpxnyl3m.pingidentity.com/pingid\norg_alias={{YourOrgAlias}}\nadmin_url=https://idpxnyl3m.pingidentity.com/pingid\nauthenticator_url=https://authenticator.pingone.com/pingid/ppm",
+			"enabled": true
+		},
+		{
+			"key": "adDcHost",
+			"value": "int-ad.solution-wf.ping-eng.com",
+			"enabled": true
+		},
+		{
+			"key": "adBaseDN",
+			"value": "dc=workforce360,dc=com",
+			"enabled": true
+		},
+		{
+			"key": "pingCentralHost",
+			"value": "https://int-docker.cpricelab.com",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-02-24T18:49:30.401Z",
+	"_postman_exported_using": "Postman/7.18.1"
+}

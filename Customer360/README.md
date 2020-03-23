@@ -81,6 +81,11 @@ To enabled LDAPS, follow these steps:
 
 ## Solution Configuration
 
+### Administrator Consoles
+* PingFederate -- https://{{PF_HOSTNAME}}:9999/pingfederate
+* PingDirectory -- https://{{PD_HOSTNAME}}:8443/console
+* PingID SDK -- https://admin.pingone.com
+
 ### PingFederate
 ---
 To access the Admin UI for PF go to:  
