@@ -1,0 +1,23 @@
+# Acceptance of the Ping EULA
+PING_IDENTITY_ACCEPT_EULA=YES
+
+# PF Logging Level
+PF_LOG_LEVEL=[ INFO | DEBUG ]
+
+# Password Used to Bind in ldap.properties
+PF_USER_PWD={{PF PD-ServiceAccount Pwd}}
+
+# AD Base DN
+AD_DC_HOST={{Your Domain Controller}}
+AD_BASE_DN={{Your AD BaseDN}}
+
+# PingCentral Variables
+PING_CENTRAL_BLIND_TRUST=true
+PING_CENTRAL_VERIFY_HOSTNAME=false
+MYSQL_USER=root
+MYSQL_PASSWORD=2Federate
+MYSQL_ROOT_PASSWORD=2Federate
+PING_CENTRAL_OIDC_ENABLED=true
+PING_CENTRAL_CLIENT_ID=PingCentral
+PING_CENTRAL_CLIENT_SECRET=2FederateM0re
+PF_ISSUER={{Your PF Issuer}}
