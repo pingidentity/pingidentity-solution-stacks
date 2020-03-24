@@ -4,11 +4,11 @@ The solution profiles address specific use cases for the Ping Identity products 
 
 Currently, these solution profiles are available:
 
-  * **Workforce**
+  * **[Workforce](Workforce360)**
 
-    The Workforce solution profile is an authentication authority solution for the workforce use case, using PingOne for Enterprise, PingID, PingFederate, PingDirectory, and Microsoft Active Directory. The PingFederate and PingDirectory images are preconfigured. Two dummy (stubbed) applications are preconfigured in PingFederate for testing SSO. You'll need to manually configure the PingOne for Enterprise connection to PingFederate.
+    The Workforce solution profile is an authentication authority solution for the workforce use case, using PingOne for Enterprise, PingID, PingFederate, PingDirectory, PingDataSync, PingCentral, and Microsoft Active Directory. Two dummy (stubbed) applications are preconfigured in PingFederate for testing SSO. You'll need to manually configure the PingOne for Enterprise connection to PingFederate.
 
-  * **Customer**
+  * **[Customer](Customer360)**
 
     The Customer solution profile is a baseline authentication authority solution for the customer use case - using PingFederate, PingDirectory, PingDataSync and PingID SDK.
 
